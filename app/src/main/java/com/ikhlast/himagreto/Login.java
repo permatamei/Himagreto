@@ -41,12 +41,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
+        setContentView(R.layout.login1);
 
         tanggal = time.getDateTimeInstance().format(new Date());
 
-        nim = findViewById(R.id.login_entrynim);
-        password = findViewById(R.id.login_entrypassword);
+        nim = findViewById(R.id.login_nimentry);
+        password = findViewById(R.id.login_passentry);
         masuk = findViewById(R.id.login_btmasuk);
         alert = new AlertDialog.Builder(this);
         session = new Sessions(getApplicationContext());
