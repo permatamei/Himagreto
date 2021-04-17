@@ -5,9 +5,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -33,6 +37,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     Sessions session;
     ProgressDialog loading;
     DateFormat time;
+    Animation animMove;
+    LinearLayout lp;
 
     private FirebaseAuth auth;
     private FirebaseUser user;
@@ -52,6 +58,19 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         session = new Sessions(getApplicationContext());
         db = FirebaseDatabase.getInstance().getReference();
         auth = FirebaseAuth.getInstance();
+
+        lp = findViewById(R.id.llpoweredby);
+        animMove = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move);
+        nim.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    lp.startAnimation(animMove);
+                    return true;
+                }
+                return false; //dont want to listen anymore
+            }
+        });
 
         masuk.setOnClickListener(this);
         daftar.setOnClickListener(this);
@@ -90,8 +109,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     "Masuk sebagai "+u+" ...",
                     true,
                     false);
-            if (!u.contains("@himagreto.com")) {
-                u = u+"@himagreto.com";
+            if (!u.contains("@himagreto-ipb.web.app")) {
+                u = u+"@himagreto-ipb.web.app";
             }
             auth.signInWithEmailAndPassword(u, p)
                     .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
@@ -99,18 +118,20 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 user = auth.getCurrentUser();
-                                nick = user.getEmail().replace("@whipb.com", "");
+                                nick = user.getEmail().replace("@himagreto-ipb.web.app", "");
                                 if (nick != null) {
                                     session.createLoginSession(nick, user.getEmail());
-                                    if (nick.equals("adminhimagreto")) {
-                                    startActivity(new Intent(Login.this, Admin.class));
+                                    if (nick.equals("admin54") || nick.equals("admin55") || nick.equals("admin56")) {
+//                                    startActivity(new Intent(Login.this, Admin.class));
+                                    startActivity(new Intent(Login.this, SplashActivity.class));
                                     overridePendingTransition(0,0);
 //                                    finish();
                                     loading.dismiss();
                                         } else {
                                         db.child("sedangAktif").child(nick).child("time").setValue(tanggal);
                                         db.child("sedangAktif").child(nick).child("phone").setValue(Build.MANUFACTURER+" "+Build.MODEL+", Android "+Build.VERSION.RELEASE);
-                                        startActivity(new Intent(Login.this, Home.class));
+//                                        startActivity(new Intent(Login.this, Home.class));
+                                        startActivity(new Intent(Login.this, SplashActivity.class));
                                         overridePendingTransition(0,0);
                                         finish();
                                         loading.dismiss();

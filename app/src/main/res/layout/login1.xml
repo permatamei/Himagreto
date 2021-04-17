@@ -91,13 +91,19 @@
         android:textSize="14sp"
         android:background="@drawable/button"/>
     </LinearLayout>
-    <TextView
-        android:id="@+id/tvpoweredby"
+    <LinearLayout
+        android:id="@+id/llpoweredby"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="23dp"
+        android:gravity="center"
+        android:orientation="vertical">
+    <TextView
+        android:id="@+id/tvpoweredby"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/powered_by"
         android:fontFamily="@font/JostRegular"/>
     <ImageView
@@ -105,11 +111,9 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:contentDescription="@string/himaaptext"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="23dp"
         android:src="@drawable/himagreto"
         android:alpha="0.3"/>
+    </LinearLayout>
 
 
 </RelativeLayout>
