@@ -13,4 +13,13 @@
     <color name="purple">#44288A</color>
     <color name="mustard">#F8CB15</color>
     <color name="black">#000000</color>
+
+<!--primer-->
+    <color name="kartu">#FCF7E7</color>
+    <color name="biruAtas">#52628D</color>
+    <color name="biruTeks">#031B61</color>
+    <color name="unguTombol">#5C4B86</color>
+    <color name="unguMenu">#44288A</color>
+    <color name="iconEnabled">#FCF7E7</color>
+    <color name="iconDisabled">#929292</color>
 </resources>

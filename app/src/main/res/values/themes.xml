@@ -23,4 +23,19 @@
         <item name="android:shadowDy">4</item>
         <item name="android:shadowRadius">4</item>
     </style>
+
+    <style name="good_morning">
+        <item name="android:fontFamily">@font/jostregular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#F6E6B6</item>
+    </style>
+    <style name="ikhlas_tauf">
+        <item name="android:fontFamily">@font/jostbold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#F6E6B6</item>
+        <item name="android:shadowColor">#26000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">4</item>
+        <item name="android:shadowRadius">4</item>
+    </style>
 </resources>

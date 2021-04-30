@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/isilisthome_cardview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:backgroundTint="@color/kartu"
+    app:cardCornerRadius="10dp"
+    android:elevation="5dp">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/text_semester_cardhome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="5dp"
+            android:text="Semester 3"
+            android:textSize="20sp"
+            android:fontFamily="@font/jostbold"
+            android:textColor="@color/biruTeks"/>
+        <TextView
+            android:id="@+id/text_isi_semester_cardhome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="5dp"
+            android:text="Dasar-dasar Agronomi, Klimatologi, Mekanika Fluida, Meteorologi, Oseanografi Umum, Pengantar Ilmu Tanah"
+            android:textSize="14sp"
+            android:fontFamily="@font/jostregular"
+            android:textColor="@color/biruTeks"/>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
