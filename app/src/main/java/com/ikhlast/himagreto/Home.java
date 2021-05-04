@@ -66,7 +66,7 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
         bnv.setOnNavigationItemSelectedListener(this);
 
         viewPager = findViewById(R.id.view_pager_home);
-        //TODO: BIKIN LAYOUT RECYCLER VIEW UNTUK SEMUA HALAMAN HOME
+        //TODO: BIKIN LAYOUT RECYCLER VIEW UNTUK SEMUA HALAMAN HOME, harinya dipermanenin aja.
         layouts = new int[] {
                 R.layout.home_home,
                 R.layout.home_tugas,
