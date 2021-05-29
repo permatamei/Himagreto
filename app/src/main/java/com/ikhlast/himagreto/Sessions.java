@@ -63,7 +63,8 @@ public class Sessions {
         if(this.isLoggedIn()) {
             // user is logged in redirect him to Home Activity
             if (spf.getString(KEY_NAME, null).equals("adminhimagreto")){
-                Intent j = new Intent(ctx, Admin.class);
+                Intent j = new Intent(ctx, Home.class);
+//                Intent j = new Intent(ctx, Admin.class);
                         j.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         j.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         ctx.startActivity(j);
@@ -79,7 +80,8 @@ public class Sessions {
                 ctx.startActivity(i);
             }
         } else {
-            Intent start=new Intent(ctx, Welcome.class);
+            Intent start=new Intent(ctx, Login.class);
+//            Intent start=new Intent(ctx, Welcome.class);
             start.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
             // Add new Flag to start new Activity

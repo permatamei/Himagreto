@@ -1,5 +1,7 @@
 package com.ikhlast.himagreto;
 
+import com.ikhlast.himagreto.Models.Semester;
+
 import java.util.ArrayList;
 
 public class SemesterData {

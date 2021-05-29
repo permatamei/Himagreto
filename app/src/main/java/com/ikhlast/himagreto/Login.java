@@ -31,7 +31,7 @@ import java.util.Date;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
     EditText nim, password;
-    Button masuk, daftar;
+    Button masuk;
     String u, p, nick, tanggal;
     AlertDialog.Builder alert;
     Sessions session;
@@ -61,19 +61,18 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         lp = findViewById(R.id.llpoweredby);
         animMove = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move);
-        nim.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-                    lp.startAnimation(animMove);
-                    return true;
-                }
-                return false; //dont want to listen anymore
-            }
-        });
+//        nim.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View view, MotionEvent motionEvent) {
+//                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+//                    lp.startAnimation(animMove);
+//                    return true;
+//                }
+//                return false; //dont want to listen anymore
+//            }
+//        });
 
         masuk.setOnClickListener(this);
-        daftar.setOnClickListener(this);
     }
 
     @Override
@@ -84,11 +83,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 p = password.getText().toString();
                 login(u, p);
                 break;
-//            case R.id.daftar:
-//                startActivity(new Intent(Login.this, Daftar.class));
-//                overridePendingTransition(0,0);
-//                finish();
-//                break;
         }
     }
     private void login(String u, String p){
@@ -123,7 +117,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                     session.createLoginSession(nick, user.getEmail());
                                     if (nick.equals("admin54") || nick.equals("admin55") || nick.equals("admin56")) {
 //                                    startActivity(new Intent(Login.this, Admin.class));
-                                    startActivity(new Intent(Login.this, SplashActivity.class));
+                                    startActivity(new Intent(Login.this, Home.class));
                                     overridePendingTransition(0,0);
 //                                    finish();
                                     loading.dismiss();
@@ -131,7 +125,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                         db.child("sedangAktif").child(nick).child("time").setValue(tanggal);
                                         db.child("sedangAktif").child(nick).child("phone").setValue(Build.MANUFACTURER+" "+Build.MODEL+", Android "+Build.VERSION.RELEASE);
 //                                        startActivity(new Intent(Login.this, Home.class));
-                                        startActivity(new Intent(Login.this, SplashActivity.class));
+                                        startActivity(new Intent(Login.this, Home.class));
                                         overridePendingTransition(0,0);
                                         finish();
                                         loading.dismiss();

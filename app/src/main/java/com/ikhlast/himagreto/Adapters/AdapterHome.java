@@ -1,18 +1,19 @@
-package com.ikhlast.himagreto;
+package com.ikhlast.himagreto.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.ikhlast.himagreto.Home;
+import com.ikhlast.himagreto.Models.Semester;
+import com.ikhlast.himagreto.R;
 
 import java.util.ArrayList;
 
@@ -48,13 +49,12 @@ public class AdapterHome extends RecyclerView.Adapter<AdapterHome.ViewHolder> {
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         user = mUser.getEmail().replace("@himagreto-ipb.web.app", "");
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardhome, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.isi_rv_home, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-
 
         final String judul = semester.get(position).getName();
         final String desc = semester.get(position).getDetail();
