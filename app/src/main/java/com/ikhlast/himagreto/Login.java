@@ -3,6 +3,7 @@ package com.ikhlast.himagreto;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,6 +31,7 @@ import java.text.DateFormat;
 import java.util.Date;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
+    TextInputLayout txNim, txPass;
     EditText nim, password;
     Button masuk;
     String u, p, nick, tanggal;
@@ -50,6 +53,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         tanggal = time.getDateTimeInstance().format(new Date());
 
+        txNim = findViewById(R.id.textinput);
+        txPass = findViewById(R.id.textinputpass);
+//        txNim.setSuffixText("@himagreto-ipb.web.app");
+//        txNim.setSuffixTextColor(ColorStateList.valueOf(getResources().getColor(R.color.biruTeks)));
         nim = findViewById(R.id.login_nimentry);
         password = findViewById(R.id.login_passentry);
         masuk = findViewById(R.id.login_btmasuk);

@@ -18,7 +18,9 @@
             android:id="@+id/textinput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:hintTextColor="@color/unguTombol"
+            android:textColorHint="@color/unguTombol"
             app:boxStrokeColor="@null"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp">
@@ -29,6 +31,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/nama"
                 android:inputType="text"
+                android:textColor="@color/biruTeks"
                 android:background="@drawable/bgentry"
                 android:fontFamily="@font/jostregular"
                 android:importantForAutofill="no"/>
@@ -38,7 +41,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:layout_gravity="center"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:hintTextColor="@color/unguTombol"
+            android:textColorHint="@color/unguTombol"
             app:boxStrokeColor="@null"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp">
@@ -49,6 +54,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/ttl"
                 android:inputType="text"
+                android:textColor="@color/biruTeks"
                 android:background="@drawable/bgentry"
                 android:fontFamily="@font/jostregular"
                 android:importantForAutofill="no"/>
@@ -58,7 +64,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:layout_gravity="center"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:hintTextColor="@color/unguTombol"
+            android:textColorHint="@color/unguTombol"
             app:boxStrokeColor="@null"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp">
@@ -68,6 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/domisili"
+                android:textColor="@color/biruTeks"
                 android:inputType="text"
                 android:background="@drawable/bgentry"
                 android:fontFamily="@font/jostregular"
@@ -78,7 +87,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:layout_gravity="center"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:hintTextColor="@color/unguTombol"
+            android:textColorHint="@color/unguTombol"
             app:boxStrokeColor="@null"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp">
@@ -88,6 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/email"
+                android:textColor="@color/biruTeks"
                 android:inputType="textEmailAddress"
                 android:background="@drawable/bgentry"
                 android:fontFamily="@font/jostregular"
@@ -98,6 +110,9 @@
             android:layout_marginTop="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:hintTextColor="@color/unguTombol"
+            android:textColorHint="@color/unguTombol"
             app:boxStrokeColor="@null"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
@@ -108,13 +123,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/nohp"
+                android:textColor="@color/biruTeks"
                 android:inputType="phone"
                 android:background="@drawable/bgentry"
                 android:fontFamily="@font/jostregular"
                 android:importantForAutofill="no"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/profil_btsubmit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -122,6 +138,7 @@
             android:text="@string/ubah"
             android:fontFamily="@font/jostmedium"
             android:textSize="14sp"
-            android:background="@drawable/button"/>
+            android:background="@drawable/button"
+            app:backgroundTint="@color/unguTombol"/>
     </LinearLayout>
 </ScrollView>

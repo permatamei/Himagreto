@@ -44,6 +44,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:textColorHint="@color/unguTombol"
+            app:hintTextColor="@color/unguTombol"
             app:boxStrokeColor="@null"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp">
@@ -54,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/nim"
                 android:inputType="text"
+                android:textColor="@color/biruTeks"
                 android:background="@drawable/bgentry"
                 android:fontFamily="@font/jostregular"
                 android:importantForAutofill="no"/>
@@ -63,8 +67,12 @@
             android:layout_marginTop="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:textColorHint="@color/unguTombol"
+            app:hintTextColor="@color/unguTombol"
             app:passwordToggleEnabled="true"
             app:passwordToggleContentDescription="toggle"
+            app:passwordToggleTint="@color/biruTeks"
             app:boxStrokeColor="@null"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
@@ -76,12 +84,13 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
                 android:inputType="textPassword"
+                android:textColor="@color/biruTeks"
                 android:background="@drawable/bgentry"
                 android:fontFamily="@font/jostregular"
                 android:importantForAutofill="no"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/login_btmasuk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -89,7 +98,8 @@
         android:text="@string/masuk"
         android:fontFamily="@font/jostmedium"
         android:textSize="14sp"
-        android:background="@drawable/button"/>
+        android:background="@drawable/button"
+        app:backgroundTint="@color/unguTombol"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/llpoweredby"

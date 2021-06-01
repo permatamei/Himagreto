@@ -8,9 +8,12 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -29,6 +32,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -42,6 +46,7 @@ import com.ikhlast.himagreto.Models.Semester;
 import com.ikhlast.himagreto.Models.Tugas;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static android.view.WindowManager.*;
 
@@ -61,6 +66,7 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
     private ImageView iv;
     private TextView tv;
     private EditText nama, ttl, domisili, emailIPB, hp;
+    private TextInputLayout txEmail;
     private Button ubahProfil;
 
     private ScrollView sv1, sv2;
@@ -79,6 +85,8 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
+
+        alert = new AlertDialog.Builder(this);
         sessions = new Sessions(getApplicationContext());
         db = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
@@ -87,7 +95,7 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
 
         iv = findViewById(R.id.foto);
         tv = findViewById(R.id.ikhlas_tauf);
-        if (!mUser.getDisplayName().equals("")){
+        if (mUser.getDisplayName() != null && !mUser.getDisplayName().equals("")){
             tv.setText(mUser.getDisplayName());
         } else {
             tv.setText(user.toUpperCase());
@@ -170,8 +178,11 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
                 sv1 = findViewById(R.id.sv1);
 //                sv2 = findViewById(R.id.sv2);
                 //ini buat profil
-                if (mUser.getDisplayName().equals("")){
+                if (mUser.getDisplayName() != null && mUser.getDisplayName().equals("")){
                     bnv.getMenu().getItem(2).setChecked(true);
+                    txEmail = findViewById(R.id.textinputemail);
+                    txEmail.setSuffixText("@apps.ipb.ac.id");
+                    txEmail.setSuffixTextColor(ColorStateList.valueOf(getResources().getColor(R.color.biruTeks)));
                     nama = findViewById(R.id.profil_nameentry);
                     ttl = findViewById(R.id.profil_ttlentry);
                     domisili = findViewById(R.id.profil_domisilientry);
@@ -473,5 +484,33 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
             View v = (View) object;
             container.removeView(v);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        logout();
+    }
+
+    public void logout(){
+        alert
+                .setTitle("Keluar")
+                .setMessage("Apakah anda ingin Keluar?")
+                .setCancelable(false)
+                .setPositiveButton("Keluar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        db.child("sedangAktif").child(user).removeValue();
+                        sessions.logoutUser();
+                        mAuth.signOut();
+                        finish();
+                        overridePendingTransition(0,0);
+                    }
+                }).setNegativeButton("Batal", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        }).create().show();
     }
 }
