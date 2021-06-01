@@ -88,6 +88,7 @@
             android:background="@drawable/bgtransparent"
             app:itemIconTint="@drawable/nav_check"
             app:itemTextColor="@drawable/nav_check"
+            app:labelVisibilityMode="selected"
             app:menu="@menu/menubiasa" />
 
     </RelativeLayout>

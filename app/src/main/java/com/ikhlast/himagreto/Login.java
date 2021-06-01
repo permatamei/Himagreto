@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -47,7 +46,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login1);
+        setContentView(R.layout.login);
 
         tanggal = time.getDateTimeInstance().format(new Date());
 
@@ -133,7 +132,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                 }
                             } else {
                                 alert.setTitle("Gagal masuk")
-                                        .setMessage("User tidak ditemukan")
+                                        .setMessage("Pastikan NIM dan password benar")
                                         .setCancelable(true)
                                         .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                             @Override

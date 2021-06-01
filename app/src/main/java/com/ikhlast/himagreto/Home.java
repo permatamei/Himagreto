@@ -19,9 +19,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,7 +42,9 @@ import com.ikhlast.himagreto.Models.Semester;
 import com.ikhlast.himagreto.Models.Tugas;
 
 import java.util.ArrayList;
-//TODO: TAMBAHIN LAYOUT BUAT TAMPILAN RECYCLER VIEW HOME DAN TUGAS
+
+import static android.view.WindowManager.*;
+
 public class Home extends AppCompatActivity implements AdapterHome.DataListener, AdapterTugas.DataListener, BottomNavigationView.OnNavigationItemSelectedListener {
     private DatabaseReference db;
     private RecyclerView rv, rv1, rvSenin, rvSelasa, rvRabu, rvKamis, rvJumat;
@@ -49,6 +57,13 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     private String user;
+
+    private ImageView iv;
+    private TextView tv;
+    private EditText nama, ttl, domisili, emailIPB, hp;
+    private Button ubahProfil;
+
+    private ScrollView sv1, sv2;
 
     AlertDialog.Builder alert;
     Sessions sessions;
@@ -64,34 +79,23 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
-        int uiOpt = getWindow().getDecorView().getSystemUiVisibility();
-        if (Build.VERSION.SDK_INT >= 14) {
-            uiOpt ^= View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
-        }
-
-        // Status bar hiding: Backwards compatible to Jellybean
-        if (Build.VERSION.SDK_INT >= 16) {
-            uiOpt ^= View.SYSTEM_UI_FLAG_FULLSCREEN;
-        }
-
-        // Immersive mode: Backward compatible to KitKat.
-        // Note that this flag doesn't do anything by itself, it only augments the behavior
-        // of HIDE_NAVIGATION and FLAG_FULLSCREEN.  For the purposes of this sample
-        // all three flags are being toggled together.
-        // Note that there are two immersive mode UI flags, one of which is referred to as "sticky".
-        // Sticky immersive mode differs in that it makes the navigation and status bars
-        // semi-transparent, and the UI flag does not get cleared when the user interacts with
-        // the screen.
-        if (Build.VERSION.SDK_INT >= 18) {
-            uiOpt ^= View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
-        }
-        getWindow().getDecorView().setSystemUiVisibility(uiOpt);
-
         sessions = new Sessions(getApplicationContext());
         db = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         user = mUser.getEmail().replace("@himagreto-ipb.web.app", "");
+
+        iv = findViewById(R.id.foto);
+        tv = findViewById(R.id.ikhlas_tauf);
+        if (!mUser.getDisplayName().equals("")){
+            tv.setText(mUser.getDisplayName());
+        } else {
+            tv.setText(user.toUpperCase());
+        }
+
+        Glide.with(Home.this)
+                .load(R.drawable.gua)
+                .into(iv);
 
         bnv = findViewById(R.id.nav_home);
         bnv.getMenu().getItem(0).setChecked(true);
@@ -125,18 +129,17 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
         @Override
         public void onPageSelected(int position) {
             if (position == 0) {
+
                 bnv.getMenu().getItem(0).setChecked(true);
                 rv1 = findViewById(R.id.admin_recycler_home);
                 rv1.setHasFixedSize(true);
                 layoutManager1 = new LinearLayoutManager(getApplicationContext());
                 rv1.setLayoutManager(layoutManager1);
-                //TODO: GANTI BUAT SET ITEM KE RV
                 getSemester(2);
                 rv.setVisibility(View.GONE);
             } else if (position == 1) {
                 //ini buat tugas
                 bnv.getMenu().getItem(1).setChecked(true);
-                //TODO: BENERIN CAST KE RV DI LAYOUT TUGAS
                 rvSenin = findViewById(R.id.home_tugas_rvSenin);
                 rvSelasa = findViewById(R.id.home_tugas_rvSelasa);
                 rvRabu = findViewById(R.id.home_tugas_rvRabu);
@@ -161,14 +164,24 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
                 rvKamis.setLayoutManager(lmKamis);
                 rvJumat.setLayoutManager(lmJumat);
 
-
-                //TODO: GANTI BUAT SET ITEM KE RV
                 getTugas();
                 rv.setVisibility(View.GONE);
             } else {
+                sv1 = findViewById(R.id.sv1);
+//                sv2 = findViewById(R.id.sv2);
                 //ini buat profil
-                bnv.getMenu().getItem(2).setChecked(true);
-                //TODO: BIKIN LAYOUT PROFIL WKWK
+                if (mUser.getDisplayName().equals("")){
+                    bnv.getMenu().getItem(2).setChecked(true);
+                    nama = findViewById(R.id.profil_nameentry);
+                    ttl = findViewById(R.id.profil_ttlentry);
+                    domisili = findViewById(R.id.profil_domisilientry);
+                    emailIPB = findViewById(R.id.profil_emailentry);
+                    hp = findViewById(R.id.profil_hpentry);
+                    ubahProfil = findViewById(R.id.profil_btsubmit);
+                } else {
+                    sv1.setVisibility(View.GONE);
+                }
+
 //                rv2 = findViewById(R.id.admin_recycler_konfirmasi);
 //                rv2.setHasFixedSize(true);
 //                layoutManager2 = new LinearLayoutManager(getApplicationContext());
@@ -185,12 +198,10 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
         }
     };
 
-
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.home_menu:
+            case R.id.home_materi:
                 if (viewPager.getCurrentItem() != 0) {
                     viewPager.setCurrentItem(0);
                 }

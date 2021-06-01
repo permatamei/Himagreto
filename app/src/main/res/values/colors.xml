@@ -21,8 +21,10 @@
     <color name="biruTeks">#031B61</color>
     <color name="unguTombol">#5C4B86</color>
     <color name="unguMenu">#44288A</color>
-    <color name="iconEnabled">#FCF7E7</color>
-    <color name="iconDisabled">#929292</color>
+<!--    <color name="iconEnabled">#FCF7E7</color>-->
+    <color name="iconEnabled">#F6E6B6</color>
+<!--    <color name="iconDisabled">#929292</color>-->
+    <color name="iconDisabled">#60F8CB15</color>
     <color name="ijodedlen">#61BD4F</color>
     <color name="merahdedlen">#EB5A46</color>
 </resources>
