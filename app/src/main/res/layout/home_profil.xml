@@ -5,140 +5,172 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="140dp"
+    android:paddingTop="275dp"
     android:paddingBottom="60dp"
     android:orientation="vertical"
     android:visibility="visible">
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
         android:layout_gravity="center_horizontal"
         android:orientation="vertical">
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textinput"
-            android:layout_width="wrap_content"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_profil_nama"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:hintTextColor="@color/unguTombol"
-            android:textColorHint="@color/unguTombol"
-            app:boxStrokeColor="@null"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp">
-
-            <EditText
-                android:id="@+id/profil_nameentry"
-                android:layout_width="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/kartu"
+            app:cardCornerRadius="10dp"
+            android:elevation="5dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/nama"
-                android:inputType="text"
-                android:textColor="@color/biruTeks"
-                android:background="@drawable/bgentry"
-                android:fontFamily="@font/jostregular"
-                android:importantForAutofill="no"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textinputttl"
-            android:layout_width="wrap_content"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:id="@+id/badge_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:src="@drawable/nama"/>
+                <TextView
+                    android:id="@+id/profil_nama"
+                    android:layout_toEndOf="@id/badge_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="45dp"
+                    android:layout_centerVertical="true"
+                    android:text="Ikhlas Taufiqul Hakim"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/jostmedium"
+                    android:textColor="@color/biruAtas"/>
+                <ImageView
+                    android:id="@+id/edit_nama"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:src="@drawable/edit"
+                    app:tint="#50000000" />
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_profil_domisili"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:hintTextColor="@color/unguTombol"
-            android:textColorHint="@color/unguTombol"
-            app:boxStrokeColor="@null"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp">
-
-            <EditText
-                android:id="@+id/profil_ttlentry"
-                android:layout_width="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/kartu"
+            app:cardCornerRadius="10dp"
+            android:elevation="5dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/ttl"
-                android:inputType="text"
-                android:textColor="@color/biruTeks"
-                android:background="@drawable/bgentry"
-                android:fontFamily="@font/jostregular"
-                android:importantForAutofill="no"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textinputdomisili"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:hintTextColor="@color/unguTombol"
-            android:textColorHint="@color/unguTombol"
-            app:boxStrokeColor="@null"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp">
+                android:gravity="center_vertical">
+                <ImageView
+                    android:id="@+id/badge_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:src="@drawable/home"/>
+                <TextView
+                    android:id="@+id/profil_domisili"
+                    android:layout_toEndOf="@id/badge_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="45dp"
+                    android:layout_centerVertical="true"
+                    android:text="Jl. Raya Bogor paling ujung RT 01 RW.001, Kab. Bogor"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/jostmedium"
+                    android:textColor="@color/biruAtas"/>
+                <ImageView
+                    android:id="@+id/edit_domisili"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:src="@drawable/edit"
+                    app:tint="#50000000" />
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-            <EditText
-                android:id="@+id/profil_domisilientry"
-                android:layout_width="wrap_content"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_profil_hp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/kartu"
+            app:cardCornerRadius="10dp"
+            android:elevation="5dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/badge_hp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:src="@drawable/badge_hp"/>
+                <TextView
+                    android:id="@+id/profil_hp"
+                    android:layout_toEndOf="@id/badge_hp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="45dp"
+                    android:layout_centerVertical="true"
+                    android:text="087771231234"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/jostmedium"
+                    android:textColor="@color/biruAtas"/>
+                <ImageView
+                    android:id="@+id/edit_phone"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:src="@drawable/edit"
+                    app:tint="#50000000" />
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_profil_hbd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/kartu"
+            app:cardCornerRadius="10dp"
+            android:elevation="5dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/domisili"
-                android:textColor="@color/biruTeks"
-                android:inputType="text"
-                android:background="@drawable/bgentry"
-                android:fontFamily="@font/jostregular"
-                android:importantForAutofill="no"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textinputemail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:hintTextColor="@color/unguTombol"
-            android:textColorHint="@color/unguTombol"
-            app:boxStrokeColor="@null"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp">
-
-            <EditText
-                android:id="@+id/profil_emailentry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/email"
-                android:textColor="@color/biruTeks"
-                android:inputType="textEmailAddress"
-                android:background="@drawable/bgentry"
-                android:fontFamily="@font/jostregular"
-                android:importantForAutofill="no"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textinputhp"
-            android:layout_marginTop="12dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:hintTextColor="@color/unguTombol"
-            android:textColorHint="@color/unguTombol"
-            app:boxStrokeColor="@null"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            android:layout_gravity="center">
-
-            <EditText
-                android:id="@+id/profil_hpentry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/nohp"
-                android:textColor="@color/biruTeks"
-                android:inputType="phone"
-                android:background="@drawable/bgentry"
-                android:fontFamily="@font/jostregular"
-                android:importantForAutofill="no"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/profil_btsubmit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
-            android:text="@string/ubah"
-            android:fontFamily="@font/jostmedium"
-            android:textSize="14sp"
-            android:background="@drawable/button"
-            app:backgroundTint="@color/unguTombol"/>
+                android:gravity="center_vertical">
+                <ImageView
+                    android:id="@+id/badge_hbd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:src="@drawable/badge_hbd"/>
+                <TextView
+                    android:id="@+id/profil_hbd"
+                    android:layout_toEndOf="@id/badge_hbd"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="45dp"
+                    android:layout_centerVertical="true"
+                    android:text="Cibinong, 3 Juni 2000"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/jostmedium"
+                    android:textColor="@color/biruAtas"/>
+                <ImageView
+                    android:id="@+id/edit_hbd"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:src="@drawable/edit"
+                    app:tint="#50000000" />
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 </ScrollView>

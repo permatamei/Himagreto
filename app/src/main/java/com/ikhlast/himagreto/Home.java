@@ -2,6 +2,7 @@ package com.ikhlast.himagreto;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,6 +38,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -55,7 +57,7 @@ import java.util.Objects;
 
 import static android.view.WindowManager.*;
 
-public class Home extends AppCompatActivity implements AdapterHome.DataListener, AdapterTugas.DataListener, BottomNavigationView.OnNavigationItemSelectedListener {
+public class Home extends AppCompatActivity implements AdapterHome.DataListener, AdapterTugas.DataListener, View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
     private DatabaseReference db;
     private RecyclerView rv, rv1, rvSenin, rvSelasa, rvRabu, rvKamis, rvJumat;
     private RecyclerView.Adapter adapter;
@@ -74,6 +76,8 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
     private EditText nama, ttl, domisili, emailIPB, hp;
     private TextInputLayout txEmail;
     private Button ubahProfil;
+
+    private MaterialCardView mcvNama, mcvDomisili, mcvHp, mcvHbd;
 
     private ScrollView sv1, sv2;
     private View vFrame, v;
@@ -235,6 +239,7 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
                 TransitionManager.go(scene2, tFade);
                 iv = findViewById(R.id.foto);
                 tv = findViewById(R.id.ikhlas_tauf);
+                bnv.getMenu().getItem(2).setChecked(true);
                 if (mUser.getDisplayName() != null && !mUser.getDisplayName().equals("")){
                     tv.setText(mUser.getDisplayName());
                 } else {
@@ -244,22 +249,31 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
                 Glide.with(Home.this)
                         .load(R.drawable.gua)
                         .into(iv);
+
+                mcvNama = findViewById(R.id.card_profil_nama);
+                mcvDomisili = findViewById(R.id.card_profil_domisili);
+                mcvHp  = findViewById(R.id.card_profil_hp);
+                mcvHbd = findViewById(R.id.card_profil_hbd);
+                mcvNama.setOnClickListener(Home.this);
+                mcvDomisili.setOnClickListener(Home.this);
+                mcvHp.setOnClickListener(Home.this);
+                mcvHbd.setOnClickListener(Home.this);
 //                sv2 = findViewById(R.id.sv2);
                 //ini buat profil
-                if (mUser.getDisplayName() != null && mUser.getDisplayName().equals("")){
-                    bnv.getMenu().getItem(2).setChecked(true);
-                    txEmail = findViewById(R.id.textinputemail);
-                    txEmail.setSuffixText("@apps.ipb.ac.id");
-                    txEmail.setSuffixTextColor(ColorStateList.valueOf(getResources().getColor(R.color.biruTeks)));
-                    nama = findViewById(R.id.profil_nameentry);
-                    ttl = findViewById(R.id.profil_ttlentry);
-                    domisili = findViewById(R.id.profil_domisilientry);
-                    emailIPB = findViewById(R.id.profil_emailentry);
-                    hp = findViewById(R.id.profil_hpentry);
-                    ubahProfil = findViewById(R.id.profil_btsubmit);
-                } else {
-                    sv1.setVisibility(View.GONE);
-                }
+//                if (mUser.getDisplayName() != null && mUser.getDisplayName().equals("")){
+//
+//                    txEmail = findViewById(R.id.textinputemail);
+//                    txEmail.setSuffixText("@apps.ipb.ac.id");
+//                    txEmail.setSuffixTextColor(ColorStateList.valueOf(getResources().getColor(R.color.biruTeks)));
+//                    nama = findViewById(R.id.profil_nameentry);
+//                    ttl = findViewById(R.id.profil_ttlentry);
+//                    domisili = findViewById(R.id.profil_domisilientry);
+//                    emailIPB = findViewById(R.id.profil_emailentry);
+//                    hp = findViewById(R.id.profil_hpentry);
+//                    ubahProfil = findViewById(R.id.profil_btsubmit);
+//                } else {
+//                    sv1.setVisibility(View.GONE);
+//                }
 
 //                rv2 = findViewById(R.id.admin_recycler_konfirmasi);
 //                rv2.setHasFixedSize(true);
@@ -525,6 +539,33 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
             }
         });
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.card_profil_nama:
+                alert = new AlertDialog.Builder(this, R.layout.layouteditoprofil);
+                alert.setMessage("Silahkan isi nama")
+                        .setTitle("Nama")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                EditText etn = findViewById(R.id.profil_nameentrys);
+                                String entt = etn.getText().toString();
+                                Toast.makeText(Home.this, entt, Toast.LENGTH_LONG).show();
+                                dialog.cancel();
+                            }
+                        })
+                        .show();
+                break;
+            case R.id.card_profil_domisili:
+                break;
+            case R.id.card_profil_hbd:
+                break;
+            case R.id.card_profil_hp:
+                break;
+        }
     }
 
     public class viewAdapter extends PagerAdapter {
