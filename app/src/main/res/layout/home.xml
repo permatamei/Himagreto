@@ -13,60 +13,66 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:background="@drawable/frame" />
+        android:background="@drawable/frame"/>
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="20dp"/>
-    <TextView
-        android:id="@+id/good_morning"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="30dp"
-        android:text="@string/good_morning"
-        android:textAppearance="@style/good_morning"
-        android:gravity="top"
-        android:alpha="0.75" />
-    <TextView
-        android:id="@+id/ikhlas_tauf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="50dp"
-        android:text="@string/ikhlas_tauf"
-        android:textAppearance="@style/ikhlas_tauf"
-        android:gravity="top" />
-    <RelativeLayout
+    <FrameLayout
+        android:id="@+id/scene_root"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <View
-            android:id="@+id/ellipse_2"
-            android:layout_width="64dp"
-            android:layout_height="63dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="10dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/ellipsefoto" />
+        <include layout="@layout/scene1"/>
+    </FrameLayout>
+<!--    <TextView-->
+<!--        android:id="@+id/good_morning"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_marginTop="30dp"-->
+<!--        android:text="@string/good_morning"-->
+<!--        android:textAppearance="@style/good_morning"-->
+<!--        android:gravity="top"-->
+<!--        android:alpha="0.75" />-->
+<!--    <TextView-->
+<!--        android:id="@+id/ikhlas_tauf"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        android:text="@string/ikhlas_tauf"-->
+<!--        android:textAppearance="@style/ikhlas_tauf"-->
+<!--        android:gravity="top" />-->
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+<!--        <View-->
+<!--            android:id="@+id/ellipse_2"-->
+<!--            android:layout_width="64dp"-->
+<!--            android:layout_height="63dp"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:background="@drawable/ellipsefoto" />-->
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/foto"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        app:civ_border_color="#fff"
-        app:civ_border_width="2dp"
-        tools:src="@drawable/gua"/>
-    </RelativeLayout>
+<!--    <de.hdodenhof.circleimageview.CircleImageView-->
+<!--        android:id="@+id/foto"-->
+<!--        android:layout_width="55dp"-->
+<!--        android:layout_height="55dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:layout_marginTop="30dp"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        app:civ_border_color="#fff"-->
+<!--        app:civ_border_width="2dp"-->
+<!--        tools:src="@drawable/gua"/>-->
+<!--    </RelativeLayout>-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -92,13 +98,13 @@
             app:menu="@menu/menubiasa" />
 
     </RelativeLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/admin_recycler_home_sementara"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
-        android:layout_marginBottom="20dp"
-        android:paddingBottom="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"/>
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/admin_recycler_home_sementara"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="140dp"-->
+<!--        android:layout_marginBottom="20dp"-->
+<!--        android:paddingBottom="50dp"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginEnd="20dp"/>-->
 </RelativeLayout>

@@ -23,11 +23,15 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
@@ -41,6 +45,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     DateFormat time;
     Animation animMove;
     LinearLayout lp;
+    ArrayList<String> listAdmin;
 
     private FirebaseAuth auth;
     private FirebaseUser user;
@@ -65,6 +70,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         db = FirebaseDatabase.getInstance().getReference();
         auth = FirebaseAuth.getInstance();
 
+
         lp = findViewById(R.id.llpoweredby);
         animMove = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move);
 //        nim.setOnTouchListener(new View.OnTouchListener() {
@@ -87,7 +93,22 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             case R.id.login_btmasuk:
                 u = nim.getText().toString();
                 p = password.getText().toString();
-                login(u, p);
+                db.child("List/Admin").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        listAdmin = new ArrayList<>();
+                        for (DataSnapshot ds : snapshot.getChildren()){
+                            String adm = ds.getValue(String.class);
+                            listAdmin.add(adm);
+                        }
+                        login(u, p);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
                 break;
         }
     }
@@ -112,7 +133,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             if (!u.contains("@himagreto-ipb.web.app")) {
                 u = u+"@himagreto-ipb.web.app";
             }
-            auth.signInWithEmailAndPassword(u, p)
+            auth.signInWithEmailAndPassword(u.toLowerCase(), p)
                     .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -121,7 +142,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                 nick = user.getEmail().replace("@himagreto-ipb.web.app", "");
                                 if (nick != null) {
                                     session.createLoginSession(nick, user.getEmail());
-                                    if (nick.equals("admin54") || nick.equals("admin55") || nick.equals("admin56")) {
+//                                    if (nick.equals("admin54") || nick.equals("admin55") || nick.equals("admin56")) {
+                                    if (listAdmin.contains(nick)) {
 //                                    startActivity(new Intent(Login.this, Admin.class));
                                     startActivity(new Intent(Login.this, Home.class));
                                     overridePendingTransition(0,0);

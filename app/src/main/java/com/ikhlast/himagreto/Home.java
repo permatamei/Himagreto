@@ -2,6 +2,7 @@ package com.ikhlast.himagreto;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
@@ -16,6 +17,10 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Bundle;
+import android.transition.Fade;
+import android.transition.Scene;
+import android.transition.Transition;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -57,6 +62,7 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
     private RecyclerView.LayoutManager layoutManager, layoutManager1, lmSenin, lmSelasa, lmRabu, lmKamis, lmJumat;
     private ArrayList<Semester> semester = new ArrayList<>();
     private ArrayList<Tugas> tgSenin, tgSelasa, tgRabu, tgKamis, tgJumat;
+    private ArrayList<String> listAktif;
 
     private ProgressDialog loading;
     private FirebaseAuth mAuth;
@@ -70,6 +76,7 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
     private Button ubahProfil;
 
     private ScrollView sv1, sv2;
+    private View vFrame, v;
 
     AlertDialog.Builder alert;
     Sessions sessions;
@@ -80,10 +87,16 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
     int[] layouts;
     LinearLayout lb;
     Intent i;
+    Scene scene1, scene2;
+    ViewGroup sceneRoot, sceneFirst;
+    Transition tFade;
+    LayoutInflater inflater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        View d = getWindow().getDecorView();
+//        d.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
         setContentView(R.layout.home);
 
         alert = new AlertDialog.Builder(this);
@@ -121,11 +134,22 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
         viewPager.setAdapter(vpAdapter);
         viewPager.addOnPageChangeListener(pagelistener);
 
-        rv = findViewById(R.id.admin_recycler_home_sementara);
-        rv.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(getApplicationContext());
-        rv.setLayoutManager(layoutManager);
-        getSemester(1);
+        inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        sceneFirst = findViewById(R.id.design_home);
+        v = inflater.inflate(layouts[0], sceneFirst, false);
+        sceneFirst.addView(v);
+
+        rv1 = findViewById(R.id.admin_recycler_home);
+        rv1.setHasFixedSize(true);
+        layoutManager1 = new LinearLayoutManager(getApplicationContext());
+        rv1.setLayoutManager(layoutManager1);
+
+        vFrame = findViewById(R.id.group_10);
+        sceneRoot = findViewById(R.id.scene_root);
+        scene1 = Scene.getSceneForLayout(sceneRoot, R.layout.scene1, this);
+        scene2 = Scene.getSceneForLayout(sceneRoot, R.layout.scene2, this);
+
+        getSemester();
     }
 
     ViewPager.OnPageChangeListener pagelistener = new ViewPager.OnPageChangeListener() {
@@ -137,16 +161,45 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
         @Override
         public void onPageSelected(int position) {
             if (position == 0) {
+                tFade = new Fade();
+                vFrame.setBackground(ContextCompat.getDrawable(Home.this, R.drawable.frame));
+                TransitionManager.go(scene1, tFade);
+                iv = findViewById(R.id.foto);
+                tv = findViewById(R.id.ikhlas_tauf);
+                if (mUser.getDisplayName() != null && !mUser.getDisplayName().equals("")){
+                    tv.setText(mUser.getDisplayName());
+                } else {
+                    tv.setText(user.toUpperCase());
+                }
+
+                Glide.with(Home.this)
+                        .load(R.drawable.gua)
+                        .into(iv);
 
                 bnv.getMenu().getItem(0).setChecked(true);
                 rv1 = findViewById(R.id.admin_recycler_home);
                 rv1.setHasFixedSize(true);
                 layoutManager1 = new LinearLayoutManager(getApplicationContext());
                 rv1.setLayoutManager(layoutManager1);
-                getSemester(2);
-                rv.setVisibility(View.GONE);
+                getSemester();
+                sceneFirst.removeView(v);
             } else if (position == 1) {
                 //ini buat tugas
+                tFade = new Fade();
+                vFrame.setBackground(ContextCompat.getDrawable(Home.this, R.drawable.frame));
+                TransitionManager.go(scene1, tFade);
+                iv = findViewById(R.id.foto);
+                tv = findViewById(R.id.ikhlas_tauf);
+                if (mUser.getDisplayName() != null && !mUser.getDisplayName().equals("")){
+                    tv.setText(mUser.getDisplayName());
+                } else {
+                    tv.setText(user.toUpperCase());
+                }
+
+                Glide.with(Home.this)
+                        .load(R.drawable.gua)
+                        .into(iv);
+
                 bnv.getMenu().getItem(1).setChecked(true);
                 rvSenin = findViewById(R.id.home_tugas_rvSenin);
                 rvSelasa = findViewById(R.id.home_tugas_rvSelasa);
@@ -173,9 +226,24 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
                 rvJumat.setLayoutManager(lmJumat);
 
                 getTugas();
-                rv.setVisibility(View.GONE);
+                sceneFirst.removeView(v);
             } else {
+                sceneFirst.removeView(v);
                 sv1 = findViewById(R.id.sv1);
+                tFade = new Fade();
+                vFrame.setBackground(ContextCompat.getDrawable(Home.this, R.drawable.frame_profil));
+                TransitionManager.go(scene2, tFade);
+                iv = findViewById(R.id.foto);
+                tv = findViewById(R.id.ikhlas_tauf);
+                if (mUser.getDisplayName() != null && !mUser.getDisplayName().equals("")){
+                    tv.setText(mUser.getDisplayName());
+                } else {
+                    tv.setText(user.toUpperCase());
+                }
+
+                Glide.with(Home.this)
+                        .load(R.drawable.gua)
+                        .into(iv);
 //                sv2 = findViewById(R.id.sv2);
                 //ini buat profil
                 if (mUser.getDisplayName() != null && mUser.getDisplayName().equals("")){
@@ -199,7 +267,6 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
 //                rv2.setLayoutManager(layoutManager2);
                 //TODO: GANTI KE SET ITEM RVNYA KALO PROFIL PAKE RV
 //                getConf();
-                rv.setVisibility(View.GONE);
             }
         }
 
@@ -253,12 +320,13 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
         Toast.makeText(Home.this, "Anda mengklik tugas " + tugas, Toast.LENGTH_LONG).show();
     }
 
-    private void getSemester(int num) {
+    private void getSemester() {
         loading = ProgressDialog.show(Home.this,
                 null,
                 "Harap tunggu...",
                 true,
                 false);
+
         db.child("List/Semester").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -267,15 +335,8 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
                     Semester smt = ds.getValue(Semester.class);
                     semester.add(smt);
                 }
-                //        semester = new ArrayList<>();
-//        semester.addAll(SemesterData.getListData());
-
                 AdapterHome adapterHome = new AdapterHome(semester, Home.this);
-                if (num == 1) {
-                    rv.setAdapter(adapterHome);
-                } else {
-                    rv1.setAdapter(adapterHome);
-                }
+                rv1.setAdapter(adapterHome);
                 loading.dismiss();
             }
 
@@ -294,160 +355,176 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
                 "Harap tunggu...",
                 true,
                 false);
-        if (user.contains("g2417")) {
-            db.child("List/Tugas/54").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    tgSenin = new ArrayList<>();
-                    for (DataSnapshot dsSenin : snapshot.child("Senin").getChildren()) {
-                        Tugas tugas = dsSenin.getValue(Tugas.class);
-                        tgSenin.add(tugas);
-                    }
-                    adapter = new AdapterTugas(tgSenin, Home.this);
-                    rvSenin.setAdapter(adapter);
-
-                    tgSelasa = new ArrayList<>();
-                    for (DataSnapshot dsSelasa : snapshot.child("Selasa").getChildren()) {
-                        Tugas tugas = dsSelasa.getValue(Tugas.class);
-                        tgSelasa.add(tugas);
-                    }
-                    adapter = new AdapterTugas(tgSelasa, Home.this);
-                    rvSelasa.setAdapter(adapter);
-
-                    tgRabu = new ArrayList<>();
-                    for (DataSnapshot dsRabu : snapshot.child("Rabu").getChildren()) {
-                        Tugas tugas = dsRabu.getValue(Tugas.class);
-                        tgRabu.add(tugas);
-                    }
-                    adapter = new AdapterTugas(tgRabu, Home.this);
-                    rvRabu.setAdapter(adapter);
-
-                    tgKamis = new ArrayList<>();
-                    for (DataSnapshot dsKamis : snapshot.child("Kamis").getChildren()) {
-                        Tugas tugas = dsKamis.getValue(Tugas.class);
-                        tgKamis.add(tugas);
-                    }
-                    adapter = new AdapterTugas(tgKamis, Home.this);
-                    rvKamis.setAdapter(adapter);
-
-                    tgJumat = new ArrayList<>();
-                    for (DataSnapshot dsJumat : snapshot.child("Jumat").getChildren()) {
-                        Tugas tugas = dsJumat.getValue(Tugas.class);
-                        tgJumat.add(tugas);
-                    }
-                    adapter = new AdapterTugas(tgJumat, Home.this);
-                    rvJumat.setAdapter(adapter);
-                    loading.dismiss();
+        db.child("List/AngkatanAktif").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listAktif = new ArrayList<>();
+                for (DataSnapshot ds : snapshot.getChildren()){
+                    String k = ds.getValue(String.class);
+                    listAktif.add(k);
                 }
+                if (user.contains(listAktif.get(0).toLowerCase())) {
+                    db.child("List/Tugas/"+listAktif.get(0)).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            tgSenin = new ArrayList<>();
+                            for (DataSnapshot dsSenin : snapshot.child("Senin").getChildren()) {
+                                Tugas tugas = dsSenin.getValue(Tugas.class);
+                                tgSenin.add(tugas);
+                            }
+                            adapter = new AdapterTugas(tgSenin, Home.this);
+                            rvSenin.setAdapter(adapter);
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
+                            tgSelasa = new ArrayList<>();
+                            for (DataSnapshot dsSelasa : snapshot.child("Selasa").getChildren()) {
+                                Tugas tugas = dsSelasa.getValue(Tugas.class);
+                                tgSelasa.add(tugas);
+                            }
+                            adapter = new AdapterTugas(tgSelasa, Home.this);
+                            rvSelasa.setAdapter(adapter);
 
+                            tgRabu = new ArrayList<>();
+                            for (DataSnapshot dsRabu : snapshot.child("Rabu").getChildren()) {
+                                Tugas tugas = dsRabu.getValue(Tugas.class);
+                                tgRabu.add(tugas);
+                            }
+                            adapter = new AdapterTugas(tgRabu, Home.this);
+                            rvRabu.setAdapter(adapter);
+
+                            tgKamis = new ArrayList<>();
+                            for (DataSnapshot dsKamis : snapshot.child("Kamis").getChildren()) {
+                                Tugas tugas = dsKamis.getValue(Tugas.class);
+                                tgKamis.add(tugas);
+                            }
+                            adapter = new AdapterTugas(tgKamis, Home.this);
+                            rvKamis.setAdapter(adapter);
+
+                            tgJumat = new ArrayList<>();
+                            for (DataSnapshot dsJumat : snapshot.child("Jumat").getChildren()) {
+                                Tugas tugas = dsJumat.getValue(Tugas.class);
+                                tgJumat.add(tugas);
+                            }
+                            adapter = new AdapterTugas(tgJumat, Home.this);
+                            rvJumat.setAdapter(adapter);
+                            loading.dismiss();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                } else if (user.contains(listAktif.get(1).toLowerCase())) {
+                    db.child("List/Tugas/"+listAktif.get(1)).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            tgSenin = new ArrayList<>();
+                            for (DataSnapshot dsSenin : snapshot.child("Senin").getChildren()) {
+                                Tugas tugas = dsSenin.getValue(Tugas.class);
+                                tgSenin.add(tugas);
+                            }
+                            adapter = new AdapterTugas(tgSenin, Home.this);
+                            rvSenin.setAdapter(adapter);
+
+                            tgSelasa = new ArrayList<>();
+                            for (DataSnapshot dsSelasa : snapshot.child("Selasa").getChildren()) {
+                                Tugas tugas = dsSelasa.getValue(Tugas.class);
+                                tgSelasa.add(tugas);
+                            }
+                            adapter = new AdapterTugas(tgSelasa, Home.this);
+                            rvSelasa.setAdapter(adapter);
+
+                            tgRabu = new ArrayList<>();
+                            for (DataSnapshot dsRabu : snapshot.child("Rabu").getChildren()) {
+                                Tugas tugas = dsRabu.getValue(Tugas.class);
+                                tgRabu.add(tugas);
+                            }
+                            adapter = new AdapterTugas(tgRabu, Home.this);
+                            rvRabu.setAdapter(adapter);
+
+                            tgKamis = new ArrayList<>();
+                            for (DataSnapshot dsKamis : snapshot.child("Kamis").getChildren()) {
+                                Tugas tugas = dsKamis.getValue(Tugas.class);
+                                tgKamis.add(tugas);
+                            }
+                            adapter = new AdapterTugas(tgKamis, Home.this);
+                            rvKamis.setAdapter(adapter);
+
+                            tgJumat = new ArrayList<>();
+                            for (DataSnapshot dsJumat : snapshot.child("Jumat").getChildren()) {
+                                Tugas tugas = dsJumat.getValue(Tugas.class);
+                                tgJumat.add(tugas);
+                            }
+                            adapter = new AdapterTugas(tgJumat, Home.this);
+                            rvJumat.setAdapter(adapter);
+                            loading.dismiss();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                } else if (user.contains(listAktif.get(2).toLowerCase())) {
+                    db.child("List/Tugas/"+listAktif.get(2)).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            tgSenin = new ArrayList<>();
+                            for (DataSnapshot dsSenin : snapshot.child("Senin").getChildren()) {
+                                Tugas tugas = dsSenin.getValue(Tugas.class);
+                                tgSenin.add(tugas);
+                            }
+                            adapter = new AdapterTugas(tgSenin, Home.this);
+                            rvSenin.setAdapter(adapter);
+
+                            tgSelasa = new ArrayList<>();
+                            for (DataSnapshot dsSelasa : snapshot.child("Selasa").getChildren()) {
+                                Tugas tugas = dsSelasa.getValue(Tugas.class);
+                                tgSelasa.add(tugas);
+                            }
+                            adapter = new AdapterTugas(tgSelasa, Home.this);
+                            rvSelasa.setAdapter(adapter);
+
+                            tgRabu = new ArrayList<>();
+                            for (DataSnapshot dsRabu : snapshot.child("Rabu").getChildren()) {
+                                Tugas tugas = dsRabu.getValue(Tugas.class);
+                                tgRabu.add(tugas);
+                            }
+                            adapter = new AdapterTugas(tgRabu, Home.this);
+                            rvRabu.setAdapter(adapter);
+
+                            tgKamis = new ArrayList<>();
+                            for (DataSnapshot dsKamis : snapshot.child("Kamis").getChildren()) {
+                                Tugas tugas = dsKamis.getValue(Tugas.class);
+                                tgKamis.add(tugas);
+                            }
+                            adapter = new AdapterTugas(tgKamis, Home.this);
+                            rvKamis.setAdapter(adapter);
+
+                            tgJumat = new ArrayList<>();
+                            for (DataSnapshot dsJumat : snapshot.child("Jumat").getChildren()) {
+                                Tugas tugas = dsJumat.getValue(Tugas.class);
+                                tgJumat.add(tugas);
+                            }
+                            adapter = new AdapterTugas(tgJumat, Home.this);
+                            rvJumat.setAdapter(adapter);
+                            loading.dismiss();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                 }
-            });
-        } else if (user.contains("g2418")) {
-            db.child("List/Tugas/55").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    tgSenin = new ArrayList<>();
-                    for (DataSnapshot dsSenin : snapshot.child("Senin").getChildren()) {
-                        Tugas tugas = dsSenin.getValue(Tugas.class);
-                        tgSenin.add(tugas);
-                    }
-                    adapter = new AdapterTugas(tgSenin, Home.this);
-                    rvSenin.setAdapter(adapter);
+            }
 
-                    tgSelasa = new ArrayList<>();
-                    for (DataSnapshot dsSelasa : snapshot.child("Selasa").getChildren()) {
-                        Tugas tugas = dsSelasa.getValue(Tugas.class);
-                        tgSelasa.add(tugas);
-                    }
-                    adapter = new AdapterTugas(tgSelasa, Home.this);
-                    rvSelasa.setAdapter(adapter);
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-                    tgRabu = new ArrayList<>();
-                    for (DataSnapshot dsRabu : snapshot.child("Rabu").getChildren()) {
-                        Tugas tugas = dsRabu.getValue(Tugas.class);
-                        tgRabu.add(tugas);
-                    }
-                    adapter = new AdapterTugas(tgRabu, Home.this);
-                    rvRabu.setAdapter(adapter);
+            }
+        });
 
-                    tgKamis = new ArrayList<>();
-                    for (DataSnapshot dsKamis : snapshot.child("Kamis").getChildren()) {
-                        Tugas tugas = dsKamis.getValue(Tugas.class);
-                        tgKamis.add(tugas);
-                    }
-                    adapter = new AdapterTugas(tgKamis, Home.this);
-                    rvKamis.setAdapter(adapter);
-
-                    tgJumat = new ArrayList<>();
-                    for (DataSnapshot dsJumat : snapshot.child("Jumat").getChildren()) {
-                        Tugas tugas = dsJumat.getValue(Tugas.class);
-                        tgJumat.add(tugas);
-                    }
-                    adapter = new AdapterTugas(tgJumat, Home.this);
-                    rvJumat.setAdapter(adapter);
-                    loading.dismiss();
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-        } else if (user.contains("g2419")) {
-            db.child("List/Tugas/56").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    tgSenin = new ArrayList<>();
-                    for (DataSnapshot dsSenin : snapshot.child("Senin").getChildren()) {
-                        Tugas tugas = dsSenin.getValue(Tugas.class);
-                        tgSenin.add(tugas);
-                    }
-                    adapter = new AdapterTugas(tgSenin, Home.this);
-                    rvSenin.setAdapter(adapter);
-
-                    tgSelasa = new ArrayList<>();
-                    for (DataSnapshot dsSelasa : snapshot.child("Selasa").getChildren()) {
-                        Tugas tugas = dsSelasa.getValue(Tugas.class);
-                        tgSelasa.add(tugas);
-                    }
-                    adapter = new AdapterTugas(tgSelasa, Home.this);
-                    rvSelasa.setAdapter(adapter);
-
-                    tgRabu = new ArrayList<>();
-                    for (DataSnapshot dsRabu : snapshot.child("Rabu").getChildren()) {
-                        Tugas tugas = dsRabu.getValue(Tugas.class);
-                        tgRabu.add(tugas);
-                    }
-                    adapter = new AdapterTugas(tgRabu, Home.this);
-                    rvRabu.setAdapter(adapter);
-
-                    tgKamis = new ArrayList<>();
-                    for (DataSnapshot dsKamis : snapshot.child("Kamis").getChildren()) {
-                        Tugas tugas = dsKamis.getValue(Tugas.class);
-                        tgKamis.add(tugas);
-                    }
-                    adapter = new AdapterTugas(tgKamis, Home.this);
-                    rvKamis.setAdapter(adapter);
-
-                    tgJumat = new ArrayList<>();
-                    for (DataSnapshot dsJumat : snapshot.child("Jumat").getChildren()) {
-                        Tugas tugas = dsJumat.getValue(Tugas.class);
-                        tgJumat.add(tugas);
-                    }
-                    adapter = new AdapterTugas(tgJumat, Home.this);
-                    rvJumat.setAdapter(adapter);
-                    loading.dismiss();
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-        }
     }
 
     public class viewAdapter extends PagerAdapter {
