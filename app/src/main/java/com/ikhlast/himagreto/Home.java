@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
@@ -16,6 +17,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.transition.Fade;
@@ -72,7 +75,7 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
     private String user;
 
     private ImageView iv;
-    private TextView tv;
+    private TextView tv, edit, batal;
     private EditText nama, ttl, domisili, emailIPB, hp;
     private TextInputLayout txEmail;
     private Button ubahProfil;
@@ -545,19 +548,22 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.card_profil_nama:
-                alert = new AlertDialog.Builder(this, R.layout.layouteditoprofil);
-                alert.setMessage("Silahkan isi nama")
-                        .setTitle("Nama")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                EditText etn = findViewById(R.id.profil_nameentrys);
-                                String entt = etn.getText().toString();
-                                Toast.makeText(Home.this, entt, Toast.LENGTH_LONG).show();
-                                dialog.cancel();
-                            }
-                        })
-                        .show();
+                View vs = getLayoutInflater().inflate(R.layout.layouteditoprofil, null);
+                nama = vs.findViewById(R.id.profil_nameentrys);
+                edit = vs.findViewById(R.id.dialog_txt_edit);
+                batal = vs.findViewById(R.id.dialog_txt_batal);
+
+                alert = new AlertDialog.Builder(this);
+
+                alert
+                        .setView(vs);
+                AlertDialog dialog = alert.create();
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+                
+//                CustomDialog cd = new CustomDialog(Home.this, "nama");
+//                cd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                cd.show();
                 break;
             case R.id.card_profil_domisili:
                 break;

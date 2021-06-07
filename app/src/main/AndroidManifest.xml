@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Himagreto">
         <activity android:name=".Home"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.FullScreen"/>
+            android:theme="@style/Theme.FullScreen" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -35,6 +35,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".CustomDialog"
+            android:theme="@android:style/Theme.Holo.Dialog"/>
         <activity
             android:name=".Login"
             android:screenOrientation="portrait"
