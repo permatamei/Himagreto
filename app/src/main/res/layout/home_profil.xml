@@ -32,7 +32,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
-                    android:src="@drawable/nama"/>
+                    android:src="@drawable/nama"
+                    android:contentDescription="@string/badge_nama"/>
                 <TextView
                     android:id="@+id/profil_nama"
                     android:layout_toEndOf="@id/badge_name"
@@ -40,7 +41,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginEnd="45dp"
                     android:layout_centerVertical="true"
-                    android:text="Ikhlas Taufiqul Hakim"
+                    android:hint="@string/silahkan_isi_nama_kamu"
                     android:textSize="16sp"
                     android:fontFamily="@font/jostmedium"
                     android:textColor="@color/biruAtas"/>
@@ -51,6 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
                     android:src="@drawable/edit"
+                    android:contentDescription="@string/icon_edit"
                     app:tint="#50000000" />
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -71,6 +73,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
+                    android:contentDescription="@string/badge_home"
                     android:src="@drawable/home"/>
                 <TextView
                     android:id="@+id/profil_domisili"
@@ -79,7 +82,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginEnd="45dp"
                     android:layout_centerVertical="true"
-                    android:text="Jl. Raya Bogor paling ujung RT 01 RW.001, Kab. Bogor"
+                    android:hint="@string/silahkan_isi_alamat_kamu"
                     android:textSize="16sp"
                     android:fontFamily="@font/jostmedium"
                     android:textColor="@color/biruAtas"/>
@@ -90,6 +93,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
                     android:src="@drawable/edit"
+                    android:contentDescription="@string/icon_edit"
                     app:tint="#50000000" />
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -104,12 +108,14 @@
             android:elevation="5dp">
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
                 <ImageView
                     android:id="@+id/badge_hp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
+                    android:contentDescription="@string/badge_hp"
                     android:src="@drawable/badge_hp"/>
                 <TextView
                     android:id="@+id/profil_hp"
@@ -118,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="45dp"
                     android:layout_centerVertical="true"
-                    android:text="087771231234"
+                    android:hint="@string/silahkan_isi_nomor_hp_kamu"
                     android:textSize="16sp"
                     android:fontFamily="@font/jostmedium"
                     android:textColor="@color/biruAtas"/>
@@ -129,6 +135,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
                     android:src="@drawable/edit"
+                    android:contentDescription="@string/icon_edit"
                     app:tint="#50000000" />
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -150,6 +157,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
+                    android:contentDescription="@string/badge_hbd"
                     android:src="@drawable/badge_hbd"/>
                 <TextView
                     android:id="@+id/profil_hbd"
@@ -158,7 +166,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginEnd="45dp"
                     android:layout_centerVertical="true"
-                    android:text="Cibinong, 3 Juni 2000"
+                    android:hint="@string/silahkan_isi_tempat_tanggal_lahir_kamu"
                     android:textSize="16sp"
                     android:fontFamily="@font/jostmedium"
                     android:textColor="@color/biruAtas"/>
@@ -169,6 +177,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
                     android:src="@drawable/edit"
+                    android:contentDescription="@string/icon_edit"
                     app:tint="#50000000" />
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>

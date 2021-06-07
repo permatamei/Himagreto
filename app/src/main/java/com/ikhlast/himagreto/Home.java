@@ -2,35 +2,29 @@ package com.ikhlast.himagreto;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.transition.Fade;
 import android.transition.Scene;
 import android.transition.Transition;
 import android.transition.TransitionManager;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -55,10 +49,9 @@ import com.ikhlast.himagreto.Adapters.AdapterTugas;
 import com.ikhlast.himagreto.Models.Semester;
 import com.ikhlast.himagreto.Models.Tugas;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Objects;
-
-import static android.view.WindowManager.*;
+import java.util.Date;
 
 public class Home extends AppCompatActivity implements AdapterHome.DataListener, AdapterTugas.DataListener, View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
     private DatabaseReference db;
@@ -72,20 +65,21 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
     private ProgressDialog loading;
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
-    private String user;
+    private String user, tanggal, jam;
 
     private ImageView iv;
-    private TextView tv, edit, batal;
+    private TextView tv, greeting, edit, batal, tvNama, tvDom, tvHp, tvHbd;
     private EditText nama, ttl, domisili, emailIPB, hp;
-    private TextInputLayout txEmail;
+    private TextInputLayout txInput;
     private Button ubahProfil;
 
     private MaterialCardView mcvNama, mcvDomisili, mcvHp, mcvHbd;
 
     private ScrollView sv1, sv2;
-    private View vFrame, v;
+    private View vFrame, v, vs;
 
     AlertDialog.Builder alert;
+    AlertDialog dialog;
     Sessions sessions;
 
     BottomNavigationView bnv;
@@ -102,8 +96,6 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        View d = getWindow().getDecorView();
-//        d.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
         setContentView(R.layout.home);
 
         alert = new AlertDialog.Builder(this);
@@ -113,16 +105,16 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
         mUser = mAuth.getCurrentUser();
         user = mUser.getEmail().replace("@himagreto-ipb.web.app", "");
 
+        tanggal = DateFormat.getDateTimeInstance().format(new Date());
+        tanggal = tanggal.replace(".", ":");
+        jam = tanggal.substring(tanggal.indexOf(":")-2);
         iv = findViewById(R.id.foto);
         tv = findViewById(R.id.ikhlas_tauf);
-        if (mUser.getDisplayName() != null && !mUser.getDisplayName().equals("")){
-            tv.setText(mUser.getDisplayName());
-        } else {
-            tv.setText(user.toUpperCase());
-        }
+        greeting = findViewById(R.id.good_morning);
+        setJam();
 
         Glide.with(Home.this)
-                .load(R.drawable.gua)
+                .load(R.drawable.profil)
                 .into(iv);
 
         bnv = findViewById(R.id.nav_home);
@@ -155,8 +147,65 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
         sceneRoot = findViewById(R.id.scene_root);
         scene1 = Scene.getSceneForLayout(sceneRoot, R.layout.scene1, this);
         scene2 = Scene.getSceneForLayout(sceneRoot, R.layout.scene2, this);
-
+        setUsername("1");
         getSemester();
+    }
+
+    private void setJam(){
+        if (jam.contains("PM")){
+            if (Integer.parseInt(jam.substring(0, 2)) < 12 && Integer.parseInt(jam.substring(0, 2)) >= 6){
+                greeting.setText(R.string.selamat_malam);
+            } else if (Integer.parseInt(jam.substring(0, 2)) < 6 && Integer.parseInt(jam.substring(0, 2)) >= 3){
+                greeting.setText(R.string.selamat_sore);
+            } else if (Integer.parseInt(jam.substring(0, 2)) < 3 && Integer.parseInt(jam.substring(0, 2)) >= 0){
+                greeting.setText(R.string.selamat_siang);
+            }
+        } else {
+            if (Integer.parseInt(jam.substring(0, 2)) < 12 && Integer.parseInt(jam.substring(0, 2)) >= 11){
+                greeting.setText(R.string.selamat_siang);
+            } else if (Integer.parseInt(jam.substring(0, 2)) < 11 && Integer.parseInt(jam.substring(0, 2)) >= 0){
+                greeting.setText(R.string.selamat_pagi);
+            }
+        }
+    }
+
+    private void setUsername(String num){
+        db.child("User/"+mUser.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (num.equals("1")) {
+                    if (snapshot.child("nama").exists()){
+                        tv.setText(snapshot.child("nama").getValue(String.class));
+                    } else {
+                        tv.setText(user.toUpperCase());
+                    }
+                } else if (!num.equals("1")){
+                    if (snapshot.child("nama").exists()){
+                        tv.setText(snapshot.child("nama").getValue(String.class));
+                        tvNama.setText(snapshot.child("nama").getValue(String.class));
+                    } else {
+                        tv.setText(user.toUpperCase());
+                    }
+                    if (snapshot.child("nohp").exists()){
+                        tvHp.setText(snapshot.child("nohp").getValue(String.class));
+                    }
+                    if (snapshot.child("domisili").exists()){
+                        tvDom.setText(snapshot.child("domisili").getValue(String.class));
+                    }
+                    if (snapshot.child("hbd").exists()){
+                        tvHbd.setText(snapshot.child("hbd").getValue(String.class));
+                    }
+                }
+
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     ViewPager.OnPageChangeListener pagelistener = new ViewPager.OnPageChangeListener() {
@@ -168,19 +217,17 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
         @Override
         public void onPageSelected(int position) {
             if (position == 0) {
+
                 tFade = new Fade();
                 vFrame.setBackground(ContextCompat.getDrawable(Home.this, R.drawable.frame));
                 TransitionManager.go(scene1, tFade);
                 iv = findViewById(R.id.foto);
                 tv = findViewById(R.id.ikhlas_tauf);
-                if (mUser.getDisplayName() != null && !mUser.getDisplayName().equals("")){
-                    tv.setText(mUser.getDisplayName());
-                } else {
-                    tv.setText(user.toUpperCase());
-                }
+                greeting = findViewById(R.id.good_morning);
+                setJam();
 
                 Glide.with(Home.this)
-                        .load(R.drawable.gua)
+                        .load(R.drawable.profil)
                         .into(iv);
 
                 bnv.getMenu().getItem(0).setChecked(true);
@@ -190,21 +237,20 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
                 rv1.setLayoutManager(layoutManager1);
                 getSemester();
                 sceneFirst.removeView(v);
+                setUsername("1");
             } else if (position == 1) {
                 //ini buat tugas
+
                 tFade = new Fade();
                 vFrame.setBackground(ContextCompat.getDrawable(Home.this, R.drawable.frame));
                 TransitionManager.go(scene1, tFade);
                 iv = findViewById(R.id.foto);
                 tv = findViewById(R.id.ikhlas_tauf);
-                if (mUser.getDisplayName() != null && !mUser.getDisplayName().equals("")){
-                    tv.setText(mUser.getDisplayName());
-                } else {
-                    tv.setText(user.toUpperCase());
-                }
+                greeting = findViewById(R.id.good_morning);
+                setJam();
 
                 Glide.with(Home.this)
-                        .load(R.drawable.gua)
+                        .load(R.drawable.profil)
                         .into(iv);
 
                 bnv.getMenu().getItem(1).setChecked(true);
@@ -234,7 +280,9 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
 
                 getTugas();
                 sceneFirst.removeView(v);
+                setUsername("1");
             } else {
+
                 sceneFirst.removeView(v);
                 sv1 = findViewById(R.id.sv1);
                 tFade = new Fade();
@@ -242,15 +290,12 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
                 TransitionManager.go(scene2, tFade);
                 iv = findViewById(R.id.foto);
                 tv = findViewById(R.id.ikhlas_tauf);
+                greeting = findViewById(R.id.good_morning);
                 bnv.getMenu().getItem(2).setChecked(true);
-                if (mUser.getDisplayName() != null && !mUser.getDisplayName().equals("")){
-                    tv.setText(mUser.getDisplayName());
-                } else {
-                    tv.setText(user.toUpperCase());
-                }
+                setJam();
 
                 Glide.with(Home.this)
-                        .load(R.drawable.gua)
+                        .load(R.drawable.profil)
                         .into(iv);
 
                 mcvNama = findViewById(R.id.card_profil_nama);
@@ -261,29 +306,14 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
                 mcvDomisili.setOnClickListener(Home.this);
                 mcvHp.setOnClickListener(Home.this);
                 mcvHbd.setOnClickListener(Home.this);
-//                sv2 = findViewById(R.id.sv2);
-                //ini buat profil
-//                if (mUser.getDisplayName() != null && mUser.getDisplayName().equals("")){
-//
-//                    txEmail = findViewById(R.id.textinputemail);
-//                    txEmail.setSuffixText("@apps.ipb.ac.id");
-//                    txEmail.setSuffixTextColor(ColorStateList.valueOf(getResources().getColor(R.color.biruTeks)));
-//                    nama = findViewById(R.id.profil_nameentry);
-//                    ttl = findViewById(R.id.profil_ttlentry);
-//                    domisili = findViewById(R.id.profil_domisilientry);
-//                    emailIPB = findViewById(R.id.profil_emailentry);
-//                    hp = findViewById(R.id.profil_hpentry);
-//                    ubahProfil = findViewById(R.id.profil_btsubmit);
-//                } else {
-//                    sv1.setVisibility(View.GONE);
-//                }
 
-//                rv2 = findViewById(R.id.admin_recycler_konfirmasi);
-//                rv2.setHasFixedSize(true);
-//                layoutManager2 = new LinearLayoutManager(getApplicationContext());
-//                rv2.setLayoutManager(layoutManager2);
-                //TODO: GANTI KE SET ITEM RVNYA KALO PROFIL PAKE RV
-//                getConf();
+                tvNama = findViewById(R.id.profil_nama);
+//                tvNama.setText(tv.getText().toString());
+                tvDom = findViewById(R.id.profil_domisili);
+                tvHp = findViewById(R.id.profil_hp);
+                tvHbd = findViewById(R.id.profil_hbd);
+                setUsername("2");
+
             }
         }
 
@@ -310,6 +340,8 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
                 if (viewPager.getCurrentItem() != 2) {
                     viewPager.setCurrentItem(2);
                 }
+                break;
+            default:
                 break;
         }
         return true;
@@ -548,28 +580,129 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.card_profil_nama:
-                View vs = getLayoutInflater().inflate(R.layout.layouteditoprofil, null);
+                vs = getLayoutInflater().inflate(R.layout.editprofil, null);
+                txInput = vs.findViewById(R.id.textinput);
+                txInput.setHint("Isi nama kamu disini");
                 nama = vs.findViewById(R.id.profil_nameentrys);
+                nama.setHint("Ikhlas Taufiqul Hakim");
+                nama.setHintTextColor(getResources().getColor(R.color.biruAtas));
+                nama.setText(tv.getText().toString());
                 edit = vs.findViewById(R.id.dialog_txt_edit);
                 batal = vs.findViewById(R.id.dialog_txt_batal);
 
                 alert = new AlertDialog.Builder(this);
 
-                alert
-                        .setView(vs);
-                AlertDialog dialog = alert.create();
+                alert.setView(vs);
+                dialog = alert.create();
+                edit.setOnClickListener(view -> {
+                    if (!nama.getText().toString().equals("")) {
+                        String show = nama.getText().toString();
+                        tvNama.setText(show);
+                        db.child("User/"+mUser.getUid()+"/nama").setValue(show);
+                        dialog.dismiss();
+                    } else {
+                        Toast t = Toast.makeText(getApplicationContext(), "Nama tidak boleh kosong", Toast.LENGTH_LONG);
+                        t.setGravity(Gravity.CENTER, 0, 0);
+                        t.show();
+                    }
+                });
+                batal.setOnClickListener(view -> dialog.dismiss());
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
-                
-//                CustomDialog cd = new CustomDialog(Home.this, "nama");
-//                cd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                cd.show();
                 break;
             case R.id.card_profil_domisili:
+                vs = getLayoutInflater().inflate(R.layout.editprofil, null);
+                txInput = vs.findViewById(R.id.textinput);
+                txInput.setHint("Isi domisili kamu disini");
+                domisili = vs.findViewById(R.id.profil_nameentrys);
+                domisili.setHint("Cibinong paling ujung, rt 1 rw 1 99999");
+                domisili.setHintTextColor(getResources().getColor(R.color.biruAtas));
+                domisili.setText(tvDom.getText().toString());
+                edit = vs.findViewById(R.id.dialog_txt_edit);
+                batal = vs.findViewById(R.id.dialog_txt_batal);
+
+                alert = new AlertDialog.Builder(this);
+
+                alert.setView(vs);
+                dialog = alert.create();
+                edit.setOnClickListener(view -> {
+                    if (!domisili.getText().toString().equals("")) {
+                        String show = domisili.getText().toString();
+                        tvDom.setText(show);
+                        db.child("User/"+mUser.getUid()+"/domisili").setValue(show);
+                        dialog.dismiss();
+                    } else {
+                        Toast t = Toast.makeText(getApplicationContext(), "Domisili tidak boleh kosong", Toast.LENGTH_LONG);
+                        t.setGravity(Gravity.CENTER, 0, 0);
+                        t.show();
+                    }
+                });
+                batal.setOnClickListener(view -> dialog.dismiss());
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
                 break;
             case R.id.card_profil_hbd:
+                vs = getLayoutInflater().inflate(R.layout.editprofil, null);
+                txInput = vs.findViewById(R.id.textinput);
+                txInput.setHint("Isi tanggal lahir kamu disini");
+                ttl = vs.findViewById(R.id.profil_nameentrys);
+                ttl.setHint("Bogor, 3 Juni 2000");
+                ttl.setHintTextColor(getResources().getColor(R.color.biruAtas));
+                ttl.setText(tvHbd.getText().toString());
+                edit = vs.findViewById(R.id.dialog_txt_edit);
+                batal = vs.findViewById(R.id.dialog_txt_batal);
+
+                alert = new AlertDialog.Builder(this);
+
+                alert.setView(vs);
+                dialog = alert.create();
+                edit.setOnClickListener(view -> {
+                    if (!ttl.getText().toString().equals("")) {
+                        String show = ttl.getText().toString();
+                        tvHbd.setText(show);
+                        db.child("User/"+mUser.getUid()+"/hbd").setValue(show);
+                        dialog.dismiss();
+                    } else {
+                        Toast t = Toast.makeText(getApplicationContext(), "Tempat tanggal lahir tidak boleh kosong", Toast.LENGTH_LONG);
+                        t.setGravity(Gravity.CENTER, 0, 0);
+                        t.show();
+                    }
+                });
+                batal.setOnClickListener(view -> dialog.dismiss());
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
                 break;
             case R.id.card_profil_hp:
+                vs = getLayoutInflater().inflate(R.layout.editprofil, null);
+                txInput = vs.findViewById(R.id.textinput);
+                txInput.setHint("Isi nomor hp kamu disini");
+                hp = vs.findViewById(R.id.profil_nameentrys);
+                hp.setHint("0888888888");
+                hp.setHintTextColor(getResources().getColor(R.color.biruAtas));
+                hp.setText(tvHp.getText().toString());
+                edit = vs.findViewById(R.id.dialog_txt_edit);
+                batal = vs.findViewById(R.id.dialog_txt_batal);
+
+                alert = new AlertDialog.Builder(this);
+
+                alert.setView(vs);
+                dialog = alert.create();
+                edit.setOnClickListener(view -> {
+                    if (!hp.getText().toString().equals("")) {
+                        String show = hp.getText().toString();
+                        tvHp.setText(show);
+                        db.child("User/"+mUser.getUid()+"/nohp").setValue(show);
+                        dialog.dismiss();
+
+                    } else {
+                        Toast t = Toast.makeText(getApplicationContext(), "Nomor handphone tidak boleh kosong", Toast.LENGTH_LONG);
+                        t.setGravity(Gravity.CENTER, 0, 0);
+                        t.show();
+                    }
+                });
+                batal.setOnClickListener(view -> dialog.dismiss());
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
                 break;
         }
     }
@@ -579,8 +712,6 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
 
         public viewAdapter() {
         }
-
-        ;
 
         @NonNull
         @Override
@@ -617,24 +748,17 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
     }
 
     public void logout(){
+        alert = new AlertDialog.Builder(this);
         alert
                 .setTitle("Keluar")
                 .setMessage("Apakah anda ingin Keluar?")
                 .setCancelable(false)
-                .setPositiveButton("Keluar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        db.child("sedangAktif").child(user).removeValue();
-                        sessions.logoutUser();
-                        mAuth.signOut();
-                        finish();
-                        overridePendingTransition(0,0);
-                    }
-                }).setNegativeButton("Batal", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        }).create().show();
+                .setPositiveButton("Keluar", (dialog, which) -> {
+                    db.child("sedangAktif").child(user).removeValue();
+                    sessions.logoutUser();
+                    mAuth.signOut();
+                    finish();
+                    overridePendingTransition(0,0);
+                }).setNegativeButton("Batal", (dialog, which) -> dialog.cancel()).create().show();
     }
 }

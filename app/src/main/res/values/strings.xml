@@ -14,4 +14,19 @@
     <string name="domisili">Domisili</string>
     <string name="email">Email IPB</string>
     <string name="nohp">Nomor Handphone</string>
+    <string name="batal">Batal</string>
+    <string name="edit">Edit</string>
+    <string name="badge_nama">badge nama</string>
+    <string name="silahkan_isi_nama_kamu">Silahkan isi nama kamu</string>
+    <string name="icon_edit">icon edit</string>
+    <string name="badge_home">badge home</string>
+    <string name="silahkan_isi_alamat_kamu">Silahkan isi alamat kamu</string>
+    <string name="badge_hp">badge hp</string>
+    <string name="silahkan_isi_nomor_hp_kamu">Silahkan isi nomor hp kamu</string>
+    <string name="badge_hbd">badge hbd</string>
+    <string name="silahkan_isi_tempat_tanggal_lahir_kamu">Silahkan isi tempat, tanggal lahir kamu</string>
+    <string name="selamat_malam">Selamat Malam,</string>
+    <string name="selamat_sore">Selamat Sore,</string>
+    <string name="selamat_siang">Selamat Siang,</string>
+    <string name="selamat_pagi">Selamat Pagi,</string>
 </resources>

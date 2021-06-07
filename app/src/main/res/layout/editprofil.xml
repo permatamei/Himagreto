@@ -3,122 +3,59 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:background="@drawable/dialog">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textinput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:textColorHint="@color/biruAtas"
+        app:hintTextColor="@color/biruAtas"
+        app:boxStrokeColor="@color/biruAtas"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeWidthFocused="1dp">
+
+        <EditText
+            android:id="@+id/profil_nameentrys"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="..."
+            android:backgroundTint="@color/kartu"
+            android:textColor="@color/biruAtas"
+            android:fontFamily="@font/jostregular"
+            android:importantForAutofill="no"/>
+    </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textinput"
+        android:gravity="end"
+        android:orientation="horizontal">
+    <TextView
+        android:id="@+id/dialog_txt_batal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="171dp"
-        android:orientation="vertical">
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textinput"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:boxStrokeColor="@null"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp">
-
-            <EditText
-                android:id="@+id/profil_nameentry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/nama"
-                android:inputType="text"
-                android:background="@drawable/bgentry"
-                android:fontFamily="@font/jostregular"
-                android:importantForAutofill="no"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textinputttl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_gravity="center"
-            app:boxStrokeColor="@null"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp">
-
-            <EditText
-                android:id="@+id/profil_ttlentry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/ttl"
-                android:inputType="date"
-                android:background="@drawable/bgentry"
-                android:fontFamily="@font/jostregular"
-                android:importantForAutofill="no"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textinputdomisili"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_gravity="center"
-            app:boxStrokeColor="@null"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp">
-
-            <EditText
-                android:id="@+id/profil_domisilientry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/domisili"
-                android:inputType="text"
-                android:background="@drawable/bgentry"
-                android:fontFamily="@font/jostregular"
-                android:importantForAutofill="no"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textinputemail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_gravity="center"
-            app:boxStrokeColor="@null"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp">
-
-            <EditText
-                android:id="@+id/profil_emailentry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/email"
-                android:inputType="textEmailAddress"
-                android:background="@drawable/bgentry"
-                android:fontFamily="@font/jostregular"
-                android:importantForAutofill="no"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textinputhp"
-            android:layout_marginTop="12dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:boxStrokeColor="@null"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            android:layout_gravity="center">
-
-            <EditText
-                android:id="@+id/profil_hpentry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/nohp"
-                android:inputType="phone"
-                android:background="@drawable/bgentry"
-                android:fontFamily="@font/jostregular"
-                android:importantForAutofill="no"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:id="@+id/profil_btsubmit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
-            android:text="@string/ubah"
-            android:fontFamily="@font/jostmedium"
-            android:textSize="14sp"
-            android:background="@drawable/button"/>
+        android:layout_marginVertical="20dp"
+        android:layout_marginEnd="5dp"
+        android:textSize="20sp"
+        android:fontFamily="@font/jostmedium"
+        android:textColor="@color/biruAtas"
+        android:text="@string/batal"/>
+    <TextView
+        android:id="@+id/dialog_txt_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:textSize="20sp"
+        android:fontFamily="@font/jostmedium"
+        android:textColor="@color/biruAtas"
+        android:text="@string/edit"/>
     </LinearLayout>
 </RelativeLayout>
