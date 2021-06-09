@@ -105,9 +105,6 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
         mUser = mAuth.getCurrentUser();
         user = mUser.getEmail().replace("@himagreto-ipb.web.app", "");
 
-        tanggal = DateFormat.getDateTimeInstance().format(new Date());
-        tanggal = tanggal.replace(".", ":");
-        jam = tanggal.substring(tanggal.indexOf(":")-2);
         iv = findViewById(R.id.foto);
         tv = findViewById(R.id.ikhlas_tauf);
         greeting = findViewById(R.id.good_morning);
@@ -152,19 +149,35 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
     }
 
     private void setJam(){
+        tanggal = DateFormat.getDateTimeInstance().format(new Date());
+        tanggal = tanggal.replace(".", ":");
+        jam = tanggal.substring(tanggal.indexOf(":")-2);
+//        Toast.makeText(this, jam, Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, tanggal, Toast.LENGTH_LONG).show();
         if (jam.contains("PM")){
-            if (Integer.parseInt(jam.substring(0, 2)) < 12 && Integer.parseInt(jam.substring(0, 2)) >= 6){
+
+            if (Integer.parseInt(jam.substring(0, 2).trim()) < 12 && Integer.parseInt(jam.substring(0, 2).trim().trim()) >= 6){
                 greeting.setText(R.string.selamat_malam);
-            } else if (Integer.parseInt(jam.substring(0, 2)) < 6 && Integer.parseInt(jam.substring(0, 2)) >= 3){
+            } else if (Integer.parseInt(jam.substring(0, 2).trim()) < 6 && Integer.parseInt(jam.substring(0, 2).trim()) >= 3){
                 greeting.setText(R.string.selamat_sore);
-            } else if (Integer.parseInt(jam.substring(0, 2)) < 3 && Integer.parseInt(jam.substring(0, 2)) >= 0){
+            } else if (Integer.parseInt(jam.substring(0, 2).trim()) < 3 && Integer.parseInt(jam.substring(0, 2).trim()) >= 0){
                 greeting.setText(R.string.selamat_siang);
             }
-        } else {
-            if (Integer.parseInt(jam.substring(0, 2)) < 12 && Integer.parseInt(jam.substring(0, 2)) >= 11){
+        } else if (jam.contains("AM")){
+            if (Integer.parseInt(jam.substring(0, 2).trim()) < 12 && Integer.parseInt(jam.substring(0, 2).trim()) >= 11){
                 greeting.setText(R.string.selamat_siang);
-            } else if (Integer.parseInt(jam.substring(0, 2)) < 11 && Integer.parseInt(jam.substring(0, 2)) >= 0){
+            } else if (Integer.parseInt(jam.substring(0, 2).trim()) < 11 && Integer.parseInt(jam.substring(0, 2).trim()) >= 0){
                 greeting.setText(R.string.selamat_pagi);
+            }
+        } else {
+            if (Integer.parseInt(jam.substring(0, 2).trim()) < 24 && Integer.parseInt(jam.substring(0, 2).trim()) >= 18){
+                greeting.setText(R.string.selamat_malam);
+            } else if (Integer.parseInt(jam.substring(0, 2).trim()) < 11 && Integer.parseInt(jam.substring(0, 2).trim()) >= 0){
+                greeting.setText(R.string.selamat_pagi);
+            } else if (Integer.parseInt(jam.substring(0, 2).trim()) < 18 && Integer.parseInt(jam.substring(0, 2).trim()) >= 15) {
+                greeting.setText(R.string.selamat_sore);
+            } else if (Integer.parseInt(jam.substring(0, 2).trim()) < 15 && Integer.parseInt(jam.substring(0, 2).trim()) >= 11){
+                greeting.setText(R.string.selamat_siang);
             }
         }
     }
@@ -349,19 +362,15 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
 
     @Override
     public void onSemesterClick(Semester smt, int position) {
-        Toast.makeText(Home.this, "Anda mengklik semester " + smt, Toast.LENGTH_LONG).show();
-        //TODO: SAMBUNGIN KE DB
-//        if (db != null){
-//            if (viewPager.getCurrentItem() == 0) {
-//                i = new Intent(Home.this, Details.class);
-//                i.putExtra(CODE, barang.getUser());
-//            } else if (viewPager.getCurrentItem() == 1){
-//                i = new Intent(Home.this, DetailsBerjalan.class);
-//                i.putExtra(CODE, barang.getUser());
-//            }
-//            startActivity(i);
-//            overridePendingTransition(0, 0);
-//        }
+//        Toast.makeText(Home.this, "Anda mengklik semester " + smt, Toast.LENGTH_LONG).show();
+
+        if (db != null){
+                i = new Intent(Home.this, PilihMatkul.class);
+                i.putExtra("namaSemester", smt.getName());
+
+            startActivity(i);
+            overridePendingTransition(0, 0);
+        }
     }
 
     @Override
