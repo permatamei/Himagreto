@@ -295,7 +295,7 @@ public class Admin extends AppCompatActivity implements AdapterAdmin.DataListene
                         }
 
                         spAngkatan = findViewById(R.id.spinnerTugasPerAngkatan);
-                        ArrayAdapter<String> adapterAngkatan = new ArrayAdapter<String>(Admin.this, android.R.layout.simple_list_item_1, listAngkatan);
+                        ArrayAdapter<String> adapterAngkatan = new ArrayAdapter<String>(Admin.this, R.layout.listitem, listAngkatan);
                         adapterAngkatan.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spAngkatan.setAdapter(adapterAngkatan);
                         adapterAngkatan.notifyDataSetChanged(); // buat fixin isinya dari db
