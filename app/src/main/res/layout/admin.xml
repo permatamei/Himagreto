@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/design_admin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/design_home">
+    <View
+        android:id="@+id/group_10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/frame"/>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp"/>
+    <FrameLayout
+        android:id="@+id/scene_root"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <include layout="@layout/scene1"/>
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/isimenuhome_cardview"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginHorizontal="20dp"
+            android:backgroundTint="@color/unguMenu"
+            app:cardCornerRadius="10dp"
+            android:elevation="5dp"/>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/nav_admin"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/bgtransparent"
+            app:itemIconTint="@drawable/nav_check"
+            app:itemTextColor="@drawable/nav_check"
+            app:labelVisibilityMode="selected"
+            app:menu="@menu/menuadmin" />
+
+    </RelativeLayout>
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/admin_recycler_home_sementara"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="140dp"-->
+<!--        android:layout_marginBottom="20dp"-->
+<!--        android:paddingBottom="50dp"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginEnd="20dp"/>-->
+</RelativeLayout>

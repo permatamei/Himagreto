@@ -13,18 +13,19 @@
         android:layout_marginHorizontal="20dp"
         android:paddingBottom="50dp"
         android:orientation="vertical">
-
+        <Spinner
+            android:id="@+id/spinnerTugasPerAngkatan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:backgroundTint="@color/mustard"
         app:cardCornerRadius="10dp"
         android:elevation="5dp">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -34,10 +35,23 @@
                 android:textSize="20sp"
                 android:fontFamily="@font/jostbold"
                 android:textColor="@color/biruTeks"/>
-        </LinearLayout>
+            <ImageView
+                android:id="@+id/admin_tambah_senin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/tambah"/>
+        </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
+        <LinearLayout
+            android:id="@+id/admin_container_tambah_senin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/home_tugas_rvSenin"
+        android:id="@+id/admin_tugas_rvSenin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -45,14 +59,12 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:backgroundTint="@color/mustard"
             app:cardCornerRadius="10dp"
             android:elevation="5dp">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -62,10 +74,23 @@
                     android:textSize="20sp"
                     android:fontFamily="@font/jostbold"
                     android:textColor="@color/biruTeks"/>
-            </LinearLayout>
+                <ImageView
+                    android:id="@+id/admin_tambah_selasa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/tambah"/>
+            </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
+        <LinearLayout
+            android:id="@+id/admin_container_tambah_selasa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/home_tugas_rvSelasa"
+            android:id="@+id/admin_tugas_rvSelasa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -73,14 +98,12 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:backgroundTint="@color/mustard"
             app:cardCornerRadius="10dp"
             android:elevation="5dp">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -90,10 +113,23 @@
                     android:textSize="20sp"
                     android:fontFamily="@font/jostbold"
                     android:textColor="@color/biruTeks"/>
-            </LinearLayout>
+                <ImageView
+                    android:id="@+id/admin_tambah_rabu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/tambah"/>
+            </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
+        <LinearLayout
+            android:id="@+id/admin_container_tambah_rabu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/home_tugas_rvRabu"
+            android:id="@+id/admin_tugas_rvRabu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -105,10 +141,9 @@
             android:backgroundTint="@color/mustard"
             app:cardCornerRadius="10dp"
             android:elevation="5dp">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -118,10 +153,23 @@
                     android:textSize="20sp"
                     android:fontFamily="@font/jostbold"
                     android:textColor="@color/biruTeks"/>
-            </LinearLayout>
+                <ImageView
+                    android:id="@+id/admin_tambah_kamis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/tambah"/>
+            </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
+        <LinearLayout
+            android:id="@+id/admin_container_tambah_kamis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/home_tugas_rvKamis"
+            android:id="@+id/admin_tugas_rvKamis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -133,10 +181,9 @@
             android:backgroundTint="@color/mustard"
             app:cardCornerRadius="10dp"
             android:elevation="5dp">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -146,10 +193,23 @@
                     android:textSize="20sp"
                     android:fontFamily="@font/jostbold"
                     android:textColor="@color/biruTeks"/>
-            </LinearLayout>
+                <ImageView
+                    android:id="@+id/admin_tambah_jumat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/tambah"/>
+            </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
+        <LinearLayout
+            android:id="@+id/admin_container_tambah_jumat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/home_tugas_rvJumat"
+            android:id="@+id/admin_tugas_rvJumat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

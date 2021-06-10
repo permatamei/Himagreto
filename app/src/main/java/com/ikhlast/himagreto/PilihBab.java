@@ -2,8 +2,14 @@ package com.ikhlast.himagreto;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.webkit.DownloadListener;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -45,6 +51,8 @@ public class PilihBab extends AppCompatActivity implements AdapterPilihBab.DataL
     private ProgressDialog loading;
     private AlertDialog.Builder alert;
 
+    private WebView wv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +61,16 @@ public class PilihBab extends AppCompatActivity implements AdapterPilihBab.DataL
         db = FirebaseDatabase.getInstance().getReference();
         fs = FirebaseStorage.getInstance();
         rv = findViewById(R.id.rv_pilihbab);
+        wv = findViewById(R.id.webview);
+        wv.getSettings().setDomStorageEnabled(true);
+//        wv.setWebViewClient(new WebViewClient());
+        wv.setWebChromeClient(new WebChromeClient());
+        wv.setDownloadListener(new DownloadListener() {
+            @Override
+            public void onDownloadStart(String s, String s1, String s2, String s3, long l) {
+                Toast.makeText(PilihBab.this, "Download start", Toast.LENGTH_LONG).show();
+            }
+        });
         rv.setHasFixedSize(true);
         lm = new LinearLayoutManager(this);
         rv.setLayoutManager(lm);
@@ -92,49 +110,36 @@ public class PilihBab extends AppCompatActivity implements AdapterPilihBab.DataL
 
     @Override
     public void onBabClick(String barang, int position) {
-        Toast.makeText(this, "anda memilih "+barang, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "File Bab "+barang+" akan didownload melalui website.", Toast.LENGTH_LONG).show();
+        loading = ProgressDialog.show(PilihBab.this,
+                null,
+                "Mendownload...",
+                true,
+                false);
         db.child("List/File/"+x[0]+"/"+x[1]+"/"+barang).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 sr = fs.getReferenceFromUrl(snapshot.getValue(String.class).replace("\"", ""));
-//                Toast.makeText(PilihBab.this, "anda memilih "+sr, Toast.LENGTH_LONG).show();
-//                sr.getBytes(Long.MAX_VALUE).addOnSuccessListener(bytes -> Toast.makeText(PilihBab.this, "File berhasil didownload", Toast.LENGTH_LONG).show()).addOnFailureListener(e -> Toast.makeText(PilihBab.this, "File gagal didownload", Toast.LENGTH_LONG).show());
-                //todo
-                File localf = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "Himagreto");
-                Toast.makeText(PilihBab.this, "anda memilih "+localf.getAbsolutePath(), Toast.LENGTH_LONG).show();
-                try {
-                    localf = File.createTempFile("Himagreto-","");
-                    sr.getFile(localf).addOnProgressListener(new OnProgressListener<FileDownloadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(@NonNull FileDownloadTask.TaskSnapshot snapshot) {
-                            double prog = (100.0 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(snapshot.getValue(String.class)));
+                startActivity(i);
+                loading.dismiss();
+                overridePendingTransition(0,0);
 
-                        }
-                    })
-                            .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                            Toast.makeText(PilihBab.this, "File berhasil didownload", Toast.LENGTH_LONG).show();
-
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            System.out.println(e);
-                        }
-                    });
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
 
             }
-//Toast.makeText(PilihBab.this, "File berhasil didownload", Toast.LENGTH_LONG).show();
-//            Toast.makeText(PilihBab.this, "File gagal didownload", Toast.LENGTH_LONG).show();
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        finish();
+        overridePendingTransition(0,0);
     }
 }

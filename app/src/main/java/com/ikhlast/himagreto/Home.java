@@ -13,6 +13,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -130,9 +131,10 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
         viewPager.setAdapter(vpAdapter);
         viewPager.addOnPageChangeListener(pagelistener);
 
+        //ini ada yang ngalangin view kalo kekgini
         inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         sceneFirst = findViewById(R.id.design_home);
-        v = inflater.inflate(layouts[0], sceneFirst, false);
+        v = inflater.inflate(R.layout.home_home_inflate, sceneFirst, false);
         sceneFirst.addView(v);
 
         rv1 = findViewById(R.id.admin_recycler_home);
@@ -592,9 +594,9 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
                 vs = getLayoutInflater().inflate(R.layout.editprofil, null);
                 txInput = vs.findViewById(R.id.textinput);
                 txInput.setHint("Isi nama kamu disini");
+                txInput.setPlaceholderText("Ikhlas Taufiqul Hakim");
+                txInput.setPlaceholderTextColor(ColorStateList.valueOf(getResources().getColor(R.color.biruAtas)));
                 nama = vs.findViewById(R.id.profil_nameentrys);
-                nama.setHint("Ikhlas Taufiqul Hakim");
-                nama.setHintTextColor(getResources().getColor(R.color.biruAtas));
                 nama.setText(tv.getText().toString());
                 edit = vs.findViewById(R.id.dialog_txt_edit);
                 batal = vs.findViewById(R.id.dialog_txt_batal);
@@ -623,9 +625,9 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
                 vs = getLayoutInflater().inflate(R.layout.editprofil, null);
                 txInput = vs.findViewById(R.id.textinput);
                 txInput.setHint("Isi domisili kamu disini");
+                txInput.setPlaceholderText("Cibinong paling ujung, rt 1 rw 1 99999");
+                txInput.setPlaceholderTextColor(ColorStateList.valueOf(getResources().getColor(R.color.biruAtas)));
                 domisili = vs.findViewById(R.id.profil_nameentrys);
-                domisili.setHint("Cibinong paling ujung, rt 1 rw 1 99999");
-                domisili.setHintTextColor(getResources().getColor(R.color.biruAtas));
                 domisili.setText(tvDom.getText().toString());
                 edit = vs.findViewById(R.id.dialog_txt_edit);
                 batal = vs.findViewById(R.id.dialog_txt_batal);
@@ -654,9 +656,9 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
                 vs = getLayoutInflater().inflate(R.layout.editprofil, null);
                 txInput = vs.findViewById(R.id.textinput);
                 txInput.setHint("Isi tanggal lahir kamu disini");
+                txInput.setPlaceholderText("Bogor, 3 Juni 2000");
+                txInput.setPlaceholderTextColor(ColorStateList.valueOf(getResources().getColor(R.color.biruAtas)));
                 ttl = vs.findViewById(R.id.profil_nameentrys);
-                ttl.setHint("Bogor, 3 Juni 2000");
-                ttl.setHintTextColor(getResources().getColor(R.color.biruAtas));
                 ttl.setText(tvHbd.getText().toString());
                 edit = vs.findViewById(R.id.dialog_txt_edit);
                 batal = vs.findViewById(R.id.dialog_txt_batal);
@@ -685,9 +687,9 @@ public class Home extends AppCompatActivity implements AdapterHome.DataListener,
                 vs = getLayoutInflater().inflate(R.layout.editprofil, null);
                 txInput = vs.findViewById(R.id.textinput);
                 txInput.setHint("Isi nomor hp kamu disini");
+                txInput.setPlaceholderText("0888888888");
+                txInput.setPlaceholderTextColor(ColorStateList.valueOf(getResources().getColor(R.color.biruAtas)));
                 hp = vs.findViewById(R.id.profil_nameentrys);
-                hp.setHint("0888888888");
-                hp.setHintTextColor(getResources().getColor(R.color.biruAtas));
                 hp.setText(tvHp.getText().toString());
                 edit = vs.findViewById(R.id.dialog_txt_edit);
                 batal = vs.findViewById(R.id.dialog_txt_batal);

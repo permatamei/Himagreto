@@ -145,7 +145,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 //                                    if (nick.equals("admin54") || nick.equals("admin55") || nick.equals("admin56")) {
                                     if (listAdmin.contains(nick)) {
 //                                    startActivity(new Intent(Login.this, Admin.class));
-                                    startActivity(new Intent(Login.this, Home.class));
+                                    startActivity(new Intent(Login.this, Admin.class));
                                     overridePendingTransition(0,0);
 //                                    finish();
                                     loading.dismiss();

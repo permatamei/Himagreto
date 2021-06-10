@@ -62,8 +62,8 @@ public class Sessions {
     public void checkLogin(){
         if(this.isLoggedIn()) {
             // user is logged in redirect him to Home Activity
-            if (spf.getString(KEY_NAME, null).equals("adminhimagreto")){
-                Intent j = new Intent(ctx, Home.class);
+            if (spf.getString(KEY_NAME, null).contains("admin")){
+                Intent j = new Intent(ctx, Admin.class);
 //                Intent j = new Intent(ctx, Admin.class);
                         j.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         j.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
