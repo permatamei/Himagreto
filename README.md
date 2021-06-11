@@ -39,3 +39,165 @@
   * Tech Stack
     - Version Control dan Collaboration Platform : Github
     - Teknologi : Java, xml
+
+### Hasil dan pembahasan
+  * **Use case diagram**
+  
+  ![user case](https://user-images.githubusercontent.com/79287863/121612839-71954080-ca85-11eb-924d-a0ac686a393a.png)
+  
+  * **Activity diagram**
+  
+  ![Untitled Diagram-Activity (1)](https://user-images.githubusercontent.com/79287863/121612878-870a6a80-ca85-11eb-82eb-a3143a4defcd.png)
+  
+  * **Class diagram**
+  
+  ![Untitled Diagram-UML](https://user-images.githubusercontent.com/79287863/121612933-a903ed00-ca85-11eb-9b1a-fd62fb360d81.png)
+  
+  * **Entity Relationship Diagram**
+ 
+ ![erd](https://user-images.githubusercontent.com/79287863/121612954-b3be8200-ca85-11eb-8653-6f6594c76e1b.png)
+  
+  * **Arsitektur sistem**
+  
+  ![arsitektur](https://user-images.githubusercontent.com/79287863/121612977-be791700-ca85-11eb-97ac-9dc668d4dac5.png)
+
+### Fungsi utama yang dikembangkan
+ * Materi Perkuliahan
+   Mahasiswa GFM dapat membaca dan mengunduh materi seperti slide kuliah, rangkuman, contoh soal, maupun master.
+
+   ![Screenshot_20210611-053615_Himagreto](https://user-images.githubusercontent.com/79287863/121613129-09932a00-ca86-11eb-95e8-bf02ede36499.jpg)
+
+ * List dan Reminder Tugas
+   Mahasiswa GFM dapat melihat list tugas harian maupun mingguan sehingga membantu dalam reminder tugas.
+
+   ![Screenshot_20210611-053606_Himagreto](https://user-images.githubusercontent.com/79287863/121613148-14e65580-ca86-11eb-9fa3-0f9cf28f521d.jpg)
+
+ * Edit Profil
+   Mahasiswa GFM dapat mengubah dan melengkapi data pribadi seperti alamat, nomor telepon dan tanggal lahir. Hal ini dapat membantu dalam kebutuhan database anggota Himagreto. 
+   
+   ![Screenshot_20210611-053727_Himagreto](https://user-images.githubusercontent.com/79287863/121613170-1dd72700-ca86-11eb-907c-3badb51c29ff.jpg)
+   ![Screenshot_20210611-053848_Himagreto](https://user-images.githubusercontent.com/79287863/121613174-1fa0ea80-ca86-11eb-8ab4-abfbf6cdda19.jpg)
+
+### Fungsi CRUD
+ * **Create**
+   - Admin dapat membuat akun sebagai admin
+   - Admin dapat menambahkan list tugas dan materi perkuliahan
+   - Mahasiswa GFM dapat membuat akun sebagai mahasiswa
+ * **Read**
+   - Admin dapat melihat list tugas
+   - Admin dapat melihat materi perkuliahan
+   - Mahasiswa GFM dapat melihat list tugas
+   - Mahasiswa GFM dapat melihat materi perkuliahan
+ * **Update**
+   - Admin dapat mengupdate list tugas
+   - Admin dapat mengubah materi perkuliahan
+   - Mahasiswa GFM dapat mengubah data pribadi seperti alamat dan nomor telepon
+ * **Delete**
+   - Admin utama dapat menghapus admin di setiap angkatan
+   - Admin dapat menghapus list tugas dan materi perkuliahan yang sudah dibuat
+   - Mahasiswa GFM dapat menghapus akun 
+
+### Hasil implementasi
+ * Screenshot sistem
+
+ * Link aplikasi 
+   [Aplikasi Himagreto](https://drive.google.com/file/d/1cR_NrnA_hwXClFN_6p-_QRSMkW99Paud/view?usp=sharing)
+   Aplikasi sudah diupload dan menunggu rilis dari google play store
+   
+   ![WhatsApp Image 2021-06-11 at 04 21 16](https://user-images.githubusercontent.com/79287863/121613646-2419d300-ca87-11eb-8f61-c6ca14bc7dd3.jpeg)
+
+### Testing
+Deskripsi Pengujian
+Prosedur Pengujian
+Data Masukan
+Keluaran Yang Diharapkan
+Hal Yang Didapati
+Hasil Uji
+Login
+Pengguna mendaftar dengan mengisi nama pengguna, kata sandi dan konfirmasi kata sandi yang benar
+Positive test case
+Nama Pengguna: G24180096
+Kata Sandi: G24180096
+Pendaftaran berhasil dan langsung menuju halaman utama
+Pendaftaran berhasil dan langsung menuju halaman utama
+Diterima
+Pengguna mendaftar dengan mengisi nama pengguna yang salah, atau kata sandi dan konfirmasi kata sandi yang salah
+Negative test case
+Nama Pengguna: G24180096
+Kata Sandi: G24180096
+Peringatan nama pengguna berupa NIM dan password harus benar
+Peringatan konfirmasi NIM dan password harus diisi dengan benar
+Diterima
+Melihat Daftar Materi
+Pengguna dapat masuk dengan NIM dan password yang benar
+Positive test case
+ 
+Muncul daftar materi per semester beserta mata kuliah dan bab-babnya
+Muncul daftar materi
+Diterima
+Pengguna dapat masuk dengan NIM dan password yang benar
+Negative test case
+ 
+Muncul daftar materi tetapi tidak dapat melihat bab-babnya
+Daftar materi dan bab tidak muncul
+Diterima
+Mengunduh Materi
+Pengguna memilih menu materi dan memilih bab yang akan diunduh
+Positive test case
+ 
+Bahan materi dapat diunduh dengan menekan tulisan bab
+Materi dapat terunduh
+Diterima
+Pengguna memilih menu materi dan memilih bab yang akan diunduh
+Negative test case
+ 
+Bahan materi tidak dapat diunduh karena tidak merespon
+Bahan materi tidak dapat diunduh
+Diterima
+Melihat Daftar Tugas
+Pengguna memilih menu tugas setelah masuk
+Positive test case
+ 
+Pengguna langsung melihat daftar tugas setiap harinya di minggu tersebut
+Terdapat daftar tugas
+Diterima
+Melihat Profil
+Pengguna dapat masuk dengan NIM dan password yang benar
+Positive test case
+ 
+Pengguna menekan simbil profil dan langsung melihat profil yang masih kosong
+Menu profil tertampil
+Diterima
+Mengedit Profil
+Pengguna dapat melihat menu profil
+Positive test case
+ 
+Pengguna mengedit biodata profil dengan menekan simbol pena
+Pengguna dapat mengedit biodata
+Diterima
+Pengguna dapat melihat menu profil
+Negative test case
+ 
+Pengguna tidak dapat mengedit biodata profil dengan menekan simbol pena karena tidak berfungsi
+Pengguna tidak dapat mengedit biodata profil
+ 
+Diterima
+Logout
+Pengguna keluar dari akun dengan menekan tombol kembali
+ Positive test case
+ 
+Muncul alert dialog dengan pesan "Apakah anda ingin keluar?" , tombol batal dan keluar
+muncul lert dialog dengan pesan "Apakah anda ingin keluar?" , tombol batal dan keluar
+Diterima
+
+### Dokumentasi Project
+    [Gsite](ipb.link/rplgsitehimagreto)
+    [Trello](https://trello.com/b/WDlrdTpQ/rpl)
+    [Asset Data](ipb.link/drivehimagretoapp)
+    [Figma](https://www.figma.com/file/Bz3drsD0eTgVYBXVJ4nhH5/RPL?node-id=0%3A1)
+ 
+### Saran untuk pengembangan selanjutnya
+    Menyelesaikan fitur lainnya yang sudah dirancang sebelumnya seperti informasi lomba, beasiswa, tracking alumni, informasi dosen GFM, dan pasca kampus
+    Memperbaiki UX design agar user nyaman menggunakannya
+    Menambahkan alarm pengingat ketika menuju deadline tugas
+ 
