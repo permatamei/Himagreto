@@ -47,7 +47,8 @@
   
   * **Activity diagram**
   
-  ![Untitled Diagram-Activity (1)](https://user-images.githubusercontent.com/79287863/121612878-870a6a80-ca85-11eb-82eb-a3143a4defcd.png)
+  ![activity](https://user-images.githubusercontent.com/64127539/121619298-9217c780-ca92-11eb-9f8c-62235cb40293.png)
+
   
   * **Class diagram**
  
