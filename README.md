@@ -79,7 +79,16 @@
    Mahasiswa GFM dapat mengubah dan melengkapi data pribadi seperti alamat, nomor telepon dan tanggal lahir. Hal ini dapat membantu dalam kebutuhan database anggota Himagreto. 
    
    ![Screenshot_20210611-053727_Himagreto](https://user-images.githubusercontent.com/79287863/121613170-1dd72700-ca86-11eb-907c-3badb51c29ff.jpg)
+   
    ![Screenshot_20210611-053848_Himagreto](https://user-images.githubusercontent.com/79287863/121613174-1fa0ea80-ca86-11eb-8ab4-abfbf6cdda19.jpg)
+   
+   * Admin Control
+   Admin memiliki akses penuh CRUD
+   ![admintugas](https://user-images.githubusercontent.com/64127539/121619631-1b2efe80-ca93-11eb-9682-c792633145af.jpeg)
+   
+   ![adminedittugas](https://user-images.githubusercontent.com/64127539/121619649-1ff3b280-ca93-11eb-9920-d46b2c9671e9.jpeg)
+
+
 
 ### Fungsi CRUD
  * **Create**
