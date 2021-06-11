@@ -79,30 +79,25 @@
    ![Screenshot_20210611-053848_Himagreto](https://user-images.githubusercontent.com/79287863/121613174-1fa0ea80-ca86-11eb-8ab4-abfbf6cdda19.jpg)
 
 ### Fungsi CRUD
+ * **Create**
+   - Admin dapat membuat akun sebagai admin
+   - Admin dapat menambahkan list tugas dan materi perkuliahan
+   - Mahasiswa GFM dapat membuat akun sebagai mahasiswa
+ * **Read**
+   - Admin dapat melihat list tugas
+   - Admin dapat melihat materi perkuliahan
+   - Mahasiswa GFM dapat melihat list tugas
+   - Mahasiswa GFM dapat melihat materi perkuliahan
+ * **Update**
+   - Admin dapat mengupdate list tugas
+   - Admin dapat mengubah materi perkuliahan
+   - Mahasiswa GFM dapat mengubah data pribadi seperti alamat dan nomor telepon
+ * **Delete**
+   - Admin utama dapat menghapus admin di setiap angkatan
+   - Admin dapat menghapus list tugas dan materi perkuliahan yang sudah dibuat
+   - Mahasiswa GFM dapat menghapus akun 
 
-CRUD
-Admin
-Mahasiswa GFM
-Create
-Admin dapat membuat akun sebagai admin
-Mahasiswa GFM dapat membuat akun sebagai mahasiswa
-Admin dapat menambahkan list tugas dan materi perkuliahan
-Read
-Admin dapat melihat list tugas
-Mahasiswa GFM dapat melihat list tugas
-Admin dapat melihat materi perkuliahan
-Mahasiswa GFM dapat melihat materi perkuliahan
-Update
-Admin dapat mengupdate list tugas
-Mahasiswa GFM dapat mengubah data pribadi seperti alamat dan nomor telepon
-Admin dapat mengubah materi perkuliahan
-Delete
-Admin utama dapat menghapus admin di setiap angkatan
-Mahasiswa GFM dapat menghapus akun 
-Admin dapat menghapus list tugas dan materi perkuliahan yang sudah dibuat
-
-
-Hasil implementasi
+### Hasil implementasi
 Screenshot sistem
 
 
