@@ -98,14 +98,15 @@
    - Mahasiswa GFM dapat menghapus akun 
 
 ### Hasil implementasi
-Screenshot sistem
+ * Screenshot sistem
 
+ * Link aplikasi 
+   [Aplikasi Himagreto](https://drive.google.com/file/d/1cR_NrnA_hwXClFN_6p-_QRSMkW99Paud/view?usp=sharing)
+   Aplikasi sudah diupload dan menunggu rilis dari google play store
+   
+   ![WhatsApp Image 2021-06-11 at 04 21 16](https://user-images.githubusercontent.com/79287863/121613646-2419d300-ca87-11eb-8f61-c6ca14bc7dd3.jpeg)
 
-Link aplikasi 
-ipb.link/himagretoapp → Pilih himagreto.apk
-Aplikasi sudah diupload dan menunggu rilis dari google play store
-
-Testing (Test cases)
+### Testing
 Deskripsi Pengujian
 Prosedur Pengujian
 Data Masukan
@@ -189,24 +190,14 @@ Muncul alert dialog dengan pesan "Apakah anda ingin keluar?" , tombol batal dan 
 muncul lert dialog dengan pesan "Apakah anda ingin keluar?" , tombol batal dan keluar
 Diterima
 
-
-
-Dokumentasi Project
-App
-ipb.link/himagretoapp
-Gsite
-ipb.link/rplgsitehimagreto
-Trello
-https://trello.com/b/WDlrdTpQ/rpl
-Github
-https://github.com/ikhlasth/Himagreto
-Asset data
-ipb.link/drivehimagretoapp
-INI FIGMA:
-https://www.figma.com/file/Bz3drsD0eTgVYBXVJ4nhH5/RPL?node-id=0%3A1
+### Dokumentasi Project
+    [Gsite](ipb.link/rplgsitehimagreto)
+    [Trello](https://trello.com/b/WDlrdTpQ/rpl)
+    [Asset Data](ipb.link/drivehimagretoapp)
+    [Figma](https://www.figma.com/file/Bz3drsD0eTgVYBXVJ4nhH5/RPL?node-id=0%3A1)
  
-Saran untuk pengembangan selanjutnya
-Menyelesaikan fitur lainnya yang sudah dirancang sebelumnya seperti informasi lomba, beasiswa, tracking alumni, informasi dosen GFM, dan pasca kampus
-Memperbaiki UX design agar user nyaman menggunakannya
-Menambahkan alarm pengingat ketika menuju deadline tugas
+### Saran untuk pengembangan selanjutnya
+    Menyelesaikan fitur lainnya yang sudah dirancang sebelumnya seperti informasi lomba, beasiswa, tracking alumni, informasi dosen GFM, dan pasca kampus
+    Memperbaiki UX design agar user nyaman menggunakannya
+    Menambahkan alarm pengingat ketika menuju deadline tugas
  
