@@ -55,8 +55,9 @@
 
   
   * **Entity Relationship Diagram**
- 
- ![erd](https://user-images.githubusercontent.com/64127539/121618522-1bc69580-ca91-11eb-8134-d03f2fd9df8e.png)
+
+ ![erd](https://user-images.githubusercontent.com/64127539/121619208-6bf22780-ca92-11eb-8e85-6828f354aee5.png)
+
   
   * **Arsitektur sistem**
   
