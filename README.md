@@ -145,11 +145,11 @@ Pengguna dapat melihat menu profil | Negative test case | &nbsp; | Pengguna tida
 Pengguna keluar dari akun dengan menekan tombol kembali | Positive test case | &nbsp; | Muncul alert dialog dengan pesan "Apakah anda ingin keluar?" , tombol batal dan keluar | muncul alert dialog dengan pesan "Apakah anda ingin keluar?" , tombol batal dan keluar | Diterima
 
 ### Dokumentasi Project
-   [Gsite](ipb.link/rplgsitehimagreto)
+   [Gsite](https://sites.google.com/d/1SHQlNLqAhRjelwpAaMwGdfQG3qtz2JFA/p/1mPbDlnEsWscku3BQJK1tGH9YMaxOSlx0/edit?pli=1&authuser=1)
    
    [Trello](https://trello.com/b/WDlrdTpQ/rpl)
    
-   [Asset Data](ipb.link/drivehimagretoapp)
+   [Asset Data](https://drive.google.com/drive/u/8/folders/1pd1ekVZ-wQZGvuJhY437BCaq2Xf17nUX)
    
    [Figma](https://www.figma.com/file/Bz3drsD0eTgVYBXVJ4nhH5/RPL?node-id=0%3A1)
  
