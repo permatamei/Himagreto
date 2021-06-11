@@ -107,88 +107,143 @@
    ![WhatsApp Image 2021-06-11 at 04 21 16](https://user-images.githubusercontent.com/79287863/121613646-2419d300-ca87-11eb-8f61-c6ca14bc7dd3.jpeg)
 
 ### Testing
-Deskripsi Pengujian
-Prosedur Pengujian
-Data Masukan
-Keluaran Yang Diharapkan
-Hal Yang Didapati
-Hasil Uji
-Login
-Pengguna mendaftar dengan mengisi nama pengguna, kata sandi dan konfirmasi kata sandi yang benar
-Positive test case
-Nama Pengguna: G24180096
-Kata Sandi: G24180096
-Pendaftaran berhasil dan langsung menuju halaman utama
-Pendaftaran berhasil dan langsung menuju halaman utama
-Diterima
-Pengguna mendaftar dengan mengisi nama pengguna yang salah, atau kata sandi dan konfirmasi kata sandi yang salah
-Negative test case
-Nama Pengguna: G24180096
-Kata Sandi: G24180096
-Peringatan nama pengguna berupa NIM dan password harus benar
-Peringatan konfirmasi NIM dan password harus diisi dengan benar
-Diterima
-Melihat Daftar Materi
-Pengguna dapat masuk dengan NIM dan password yang benar
-Positive test case
- 
-Muncul daftar materi per semester beserta mata kuliah dan bab-babnya
-Muncul daftar materi
-Diterima
-Pengguna dapat masuk dengan NIM dan password yang benar
-Negative test case
- 
-Muncul daftar materi tetapi tidak dapat melihat bab-babnya
-Daftar materi dan bab tidak muncul
-Diterima
-Mengunduh Materi
-Pengguna memilih menu materi dan memilih bab yang akan diunduh
-Positive test case
- 
-Bahan materi dapat diunduh dengan menekan tulisan bab
-Materi dapat terunduh
-Diterima
-Pengguna memilih menu materi dan memilih bab yang akan diunduh
-Negative test case
- 
-Bahan materi tidak dapat diunduh karena tidak merespon
-Bahan materi tidak dapat diunduh
-Diterima
-Melihat Daftar Tugas
-Pengguna memilih menu tugas setelah masuk
-Positive test case
- 
-Pengguna langsung melihat daftar tugas setiap harinya di minggu tersebut
-Terdapat daftar tugas
-Diterima
-Melihat Profil
-Pengguna dapat masuk dengan NIM dan password yang benar
-Positive test case
- 
-Pengguna menekan simbil profil dan langsung melihat profil yang masih kosong
-Menu profil tertampil
-Diterima
-Mengedit Profil
-Pengguna dapat melihat menu profil
-Positive test case
- 
-Pengguna mengedit biodata profil dengan menekan simbol pena
-Pengguna dapat mengedit biodata
-Diterima
-Pengguna dapat melihat menu profil
-Negative test case
- 
-Pengguna tidak dapat mengedit biodata profil dengan menekan simbol pena karena tidak berfungsi
-Pengguna tidak dapat mengedit biodata profil
- 
-Diterima
-Logout
-Pengguna keluar dari akun dengan menekan tombol kembali
- Positive test case
- 
-Muncul alert dialog dengan pesan "Apakah anda ingin keluar?" , tombol batal dan keluar
-muncul lert dialog dengan pesan "Apakah anda ingin keluar?" , tombol batal dan keluar
-Diterima
+<table>
+    <thead>
+        <tr>
+            <th>Deskripsi Pengujian</th>
+            <th>Prosedur Pengujian</th>
+            <th>Data Masukan</th>
+            <th>Keluaran Yang Diharapkan</th>
+            <th>Hal Yang Didapati</th>
+            <th>Hasil Uji</th>    
+        </tr>
+    </thead>
+    <tbody>
+         <tr>
+          <thead>
+            <th colspan='6'>Login</th>
+          </thead>
+            <td>Pengguna mendaftar dengan mengisi nama pengguna, kata sandi dan konfirmasi kata sandi yang benar</td>
+            <td>Positive test case</td>
+            <td>
+             Nama Pengguna: G24180096
+             Kata Sandi: G24180096
+            </td>
+            <td>Pendaftaran berhasil dan langsung menuju halaman utama</td>
+            <td>Pendaftaran berhasil dan langsung menuju halaman utama</td>
+            <td>Diterima</td>
+         </tr>
+         <tr>
+            <td>Pengguna mendaftar dengan mengisi nama pengguna yang salah, atau kata sandi dan konfirmasi kata sandi yang salah</td>
+            <td>Negative test case</td>
+            <td>
+             Nama Pengguna: G24180096
+             Kata Sandi: G24180096
+            </td>
+            <td>Peringatan nama pengguna berupa NIM dan password harus benar</td>
+            <td>Peringatan konfirmasi NIM dan password harus diisi dengan benar</td>
+            <td>Diterima</td>
+          </tr>
+          <tr>
+          <thead>
+           <th colspan='6'>Melihat Daftar Materi</th>
+          </thead>
+            <td>Pengguna dapat masuk dengan NIM dan password yang benar</td>
+            <td>Positive test case</td>
+            <td></td>
+            <td>Muncul daftar materi per semester beserta mata kuliah dan bab-babnya</td>
+            <td>Muncul daftar materi</td>
+            <td>Diterima</td>
+          </tr>
+     <tr>
+       <td>Pengguna dapat masuk dengan NIM dan password yang benar</td>
+       <td>Negative test case</td>
+       <td></td>
+       <td>Muncul daftar materi tetapi tidak dapat melihat bab-babnya</td>
+       <td>Daftar materi dan bab tidak muncul</td>
+       <td>Diterima</td>
+     </tr>
+     <tr>
+          <thead>
+           <th colspan='6'>Mengunduh Materi</th>
+          </thead>
+            <td>Pengguna memilih menu materi dan memilih bab yang akan diunduh</td>
+            <td>Positive test case</td>
+            <td></td>
+            <td>Bahan materi dapat diunduh dengan menekan tulisan bab</td>
+            <td>Materi dapat terunduh</td>
+            <td>Diterima</td>
+          </tr>
+     <tr>
+       <td>Pengguna memilih menu materi dan memilih bab yang akan diunduh</td>
+       <td>Negative test case</td>
+       <td></td>
+       <td>Bahan materi tidak dapat diunduh karena tidak merespon</td>
+       <td>Bahan materi tidak dapat diunduh</td>
+       <td>Diterima</td>
+     </tr>
+     <tr>
+          <thead>
+           <th colspan='6'>Melihat Daftar Tugas</th>
+          </thead>
+            <td>Pengguna memilih menu tugas setelah masuk</td>
+            <td>Positive test case</td>
+            <td></td>
+            <td>Pengguna langsung melihat daftar tugas setiap harinya di minggu tersebut</td>
+            <td>Terdapat daftar tugas</td>
+            <td>Diterima</td>
+     </tr>
+     <tr>
+          <thead>
+           <th colspan='6'>Melihat Profil</th>
+          </thead>
+            <td>Pengguna dapat masuk dengan NIM dan password yang benar</td>
+            <td>Positive test case</td>
+            <td></td>
+            <td>Pengguna menekan simbol profil dan langsung melihat profil yang masih kosong</td>
+            <td>Menu profil tertampil</td>
+            <td>Diterima</td>
+     </tr>
+     <tr>
+          <thead>
+           <th colspan='6'>Mengedit Profil</th>
+          </thead>
+            <td>Pengguna dapat melihat menu profil</td>
+            <td>Positive test case</td>
+            <td></td>
+            <td>Pengguna mengedit biodata profil dengan menekan simbol pena</td>
+            <td>Pengguna dapat mengedit biodata</td>
+            <td>Diterima</td>
+     </tr>
+     <tr>
+       <td>Pengguna dapat melihat menu profil</td>
+       <td>Negative test case</td>
+       <td></td>
+       <td>Pengguna tidak dapat mengedit biodata profil dengan menekan simbol pena karena tidak berfungsi</td>
+       <td>Pengguna tidak dapat mengedit biodata profil</td>
+       <td>Diterima</td>
+     </tr>
+     <tr>
+          <thead>
+           <th colspan='6'>Logout</th>
+          </thead>
+            <td>Pengguna keluar dari akun dengan menekan tombol kembali</td>
+            <td>Positive test case</td>
+            <td></td>
+            <td>Muncul alert dialog dengan pesan "Apakah anda ingin keluar?" , tombol batal dan keluar</td>
+            <td>muncul alert dialog dengan pesan "Apakah anda ingin keluar?" , tombol batal dan keluar</td>
+            <td>Diterima</td>
+     </tr>
+     <tr>
+       <td>Pengguna dapat melihat menu profil</td>
+       <td>Negative test case</td>
+       <td></td>
+       <td>Pengguna tidak dapat mengedit biodata profil dengan menekan simbol pena karena tidak berfungsi</td>
+       <td>Pengguna tidak dapat mengedit biodata profil</td>
+       <td>Diterima</td>
+     </tr>
+     </tbody>
+</table>
 
 ### Dokumentasi Project
     [Gsite](ipb.link/rplgsitehimagreto)
