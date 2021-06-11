@@ -65,18 +65,21 @@
  * Materi Perkuliahan
    Mahasiswa GFM dapat membaca dan mengunduh materi seperti slide kuliah, rangkuman, contoh soal, maupun master.
 
-   ![Screenshot_20210611-053615_Himagreto](https://user-images.githubusercontent.com/79287863/121613129-09932a00-ca86-11eb-95e8-bf02ede36499.jpg)
+   ![Screenshot_20210611-053615_Himagreto](https://user-images.githubusercontent.com/79287863/121614157-4fe98880-ca88-11eb-8e16-e7ec1233ec68.jpg)
+
 
  * List dan Reminder Tugas
    Mahasiswa GFM dapat melihat list tugas harian maupun mingguan sehingga membantu dalam reminder tugas.
 
-   ![Screenshot_20210611-053606_Himagreto](https://user-images.githubusercontent.com/79287863/121613148-14e65580-ca86-11eb-9fa3-0f9cf28f521d.jpg)
+   ![Screenshot_20210611-053606_Himagreto](https://user-images.githubusercontent.com/79287863/121614169-5841c380-ca88-11eb-85b6-120160fe8eb7.jpg)
+
 
  * Edit Profil
    Mahasiswa GFM dapat mengubah dan melengkapi data pribadi seperti alamat, nomor telepon dan tanggal lahir. Hal ini dapat membantu dalam kebutuhan database anggota Himagreto. 
    
-   ![Screenshot_20210611-053727_Himagreto](https://user-images.githubusercontent.com/79287863/121613170-1dd72700-ca86-11eb-907c-3badb51c29ff.jpg)
-   ![Screenshot_20210611-053848_Himagreto](https://user-images.githubusercontent.com/79287863/121613174-1fa0ea80-ca86-11eb-8ab4-abfbf6cdda19.jpg)
+   ![Screenshot_20210611-053727_Himagreto](https://user-images.githubusercontent.com/79287863/121614188-60016800-ca88-11eb-94a9-e888b427934c.jpg)
+![Screenshot_20210611-053848_Himagreto](https://user-images.githubusercontent.com/79287863/121614191-6099fe80-ca88-11eb-9bc3-61a4350dc9c0.jpg)
+
 
 ### Fungsi CRUD
  * **Create**
@@ -99,6 +102,16 @@
 
 ### Hasil implementasi
  * Screenshot sistem
+   
+   ![Screenshot_20210611-054958_Himagreto](https://user-images.githubusercontent.com/79287863/121614254-80c9bd80-ca88-11eb-9a84-cfc1feb206d5.jpg)
+![Screenshot_20210611-053525_Himagreto](https://user-images.githubusercontent.com/79287863/121614259-83c4ae00-ca88-11eb-876e-35deff4a03d0.jpg)
+![Screenshot_20210611-053615_Himagreto](https://user-images.githubusercontent.com/79287863/121614265-86bf9e80-ca88-11eb-8780-4d1d05a3defb.jpg)
+![Screenshot_20210611-053646_Himagreto](https://user-images.githubusercontent.com/79287863/121614273-8a532580-ca88-11eb-8bb6-15039b7d1492.jpg)
+![Screenshot_20210611-053652_Samsung Internet](https://user-images.githubusercontent.com/79287863/121614282-8de6ac80-ca88-11eb-8f64-2dc0926b9809.jpg)
+![Screenshot_20210611-053606_Himagreto](https://user-images.githubusercontent.com/79287863/121614289-9343f700-ca88-11eb-8033-92b1f8375b6a.jpg)
+![Screenshot_20210611-053727_Himagreto](https://user-images.githubusercontent.com/79287863/121614301-9939d800-ca88-11eb-9451-3dec9700de0a.jpg)
+![Screenshot_20210611-053848_Himagreto](https://user-images.githubusercontent.com/79287863/121614307-9ccd5f00-ca88-11eb-919e-e3ab98627473.jpg)
+![Screenshot_20210611-054948_Himagreto](https://user-images.githubusercontent.com/79287863/121614318-a060e600-ca88-11eb-914b-b429e7175de4.jpg)
 
  * Link aplikasi 
    [Aplikasi Himagreto](https://drive.google.com/file/d/1cR_NrnA_hwXClFN_6p-_QRSMkW99Paud/view?usp=sharing)
@@ -191,13 +204,16 @@ muncul lert dialog dengan pesan "Apakah anda ingin keluar?" , tombol batal dan k
 Diterima
 
 ### Dokumentasi Project
-    [Gsite](ipb.link/rplgsitehimagreto)
-    [Trello](https://trello.com/b/WDlrdTpQ/rpl)
-    [Asset Data](ipb.link/drivehimagretoapp)
-    [Figma](https://www.figma.com/file/Bz3drsD0eTgVYBXVJ4nhH5/RPL?node-id=0%3A1)
+   [Gsite](ipb.link/rplgsitehimagreto)
+   
+   [Trello](https://trello.com/b/WDlrdTpQ/rpl)
+   
+   [Asset Data](ipb.link/drivehimagretoapp)
+   
+   [Figma](https://www.figma.com/file/Bz3drsD0eTgVYBXVJ4nhH5/RPL?node-id=0%3A1)
  
 ### Saran untuk pengembangan selanjutnya
-    Menyelesaikan fitur lainnya yang sudah dirancang sebelumnya seperti informasi lomba, beasiswa, tracking alumni, informasi dosen GFM, dan pasca kampus
-    Memperbaiki UX design agar user nyaman menggunakannya
-    Menambahkan alarm pengingat ketika menuju deadline tugas
+   * Menyelesaikan fitur lainnya yang sudah dirancang sebelumnya seperti informasi lomba, beasiswa, tracking alumni, informasi dosen GFM, dan pasca kampus
+   * Memperbaiki UX design agar user nyaman menggunakannya
+   * Menambahkan alarm pengingat ketika menuju deadline tugas
  
