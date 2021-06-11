@@ -50,12 +50,13 @@
   ![Untitled Diagram-Activity (1)](https://user-images.githubusercontent.com/79287863/121612878-870a6a80-ca85-11eb-82eb-a3143a4defcd.png)
   
   * **Class diagram**
-  
-  ![Untitled Diagram-UML](https://user-images.githubusercontent.com/79287863/121612933-a903ed00-ca85-11eb-9b1a-fd62fb360d81.png)
+ 
+  ![uml](https://user-images.githubusercontent.com/64127539/121619156-4b29d200-ca92-11eb-812f-1c99cbe918be.png)
+
   
   * **Entity Relationship Diagram**
  
- ![erd](https://user-images.githubusercontent.com/79287863/121612954-b3be8200-ca85-11eb-8653-6f6594c76e1b.png)
+ ![erd](https://user-images.githubusercontent.com/64127539/121618522-1bc69580-ca91-11eb-8134-d03f2fd9df8e.png)
   
   * **Arsitektur sistem**
   
