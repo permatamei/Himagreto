@@ -66,19 +66,16 @@
 
 ### Fungsi utama yang dikembangkan
  * Materi Perkuliahan
- 
    Mahasiswa GFM dapat membaca dan mengunduh materi seperti slide kuliah, rangkuman, contoh soal, maupun master.
 
    ![Screenshot_20210611-053615_Himagreto](https://user-images.githubusercontent.com/79287863/121613129-09932a00-ca86-11eb-95e8-bf02ede36499.jpg)
 
  * List dan Reminder Tugas
- 
    Mahasiswa GFM dapat melihat list tugas harian maupun mingguan sehingga membantu dalam reminder tugas.
 
    ![Screenshot_20210611-053606_Himagreto](https://user-images.githubusercontent.com/79287863/121613148-14e65580-ca86-11eb-9fa3-0f9cf28f521d.jpg)
 
  * Edit Profil
- 
    Mahasiswa GFM dapat mengubah dan melengkapi data pribadi seperti alamat, nomor telepon dan tanggal lahir. Hal ini dapat membantu dalam kebutuhan database anggota Himagreto. 
    
    ![Screenshot_20210611-053727_Himagreto](https://user-images.githubusercontent.com/79287863/121613170-1dd72700-ca86-11eb-907c-3badb51c29ff.jpg)
@@ -86,13 +83,10 @@
    ![Screenshot_20210611-053848_Himagreto](https://user-images.githubusercontent.com/79287863/121613174-1fa0ea80-ca86-11eb-8ab4-abfbf6cdda19.jpg)
    
    * Admin Control
-   
-   Admin memiliki akses penuh CRUD.
-   
+   Admin memiliki akses penuh CRUD
    ![admintugas](https://user-images.githubusercontent.com/64127539/121619631-1b2efe80-ca93-11eb-9682-c792633145af.jpeg)
    
-   ![adminedittugas (2)](https://user-images.githubusercontent.com/64127539/121619817-66491180-ca93-11eb-8be9-350dfc2c3982.jpeg)
-
+   ![adminedittugas](https://user-images.githubusercontent.com/64127539/121619649-1ff3b280-ca93-11eb-9920-d46b2c9671e9.jpeg)
 
 
 
@@ -258,13 +252,16 @@
 </table>
 
 ### Dokumentasi Project
-    [Gsite](ipb.link/rplgsitehimagreto)
-    [Trello](https://trello.com/b/WDlrdTpQ/rpl)
-    [Asset Data](ipb.link/drivehimagretoapp)
-    [Figma](https://www.figma.com/file/Bz3drsD0eTgVYBXVJ4nhH5/RPL?node-id=0%3A1)
+   [Gsite](https://ipb.link/rplgsitehimagreto)
+   
+   [Trello](https://trello.com/b/WDlrdTpQ/rpl)
+   
+   [Asset Data](https://ipb.link/drivehimagretoapp)
+   
+   [Figma](https://www.figma.com/file/Bz3drsD0eTgVYBXVJ4nhH5/RPL?node-id=0%3A1)
  
 ### Saran untuk pengembangan selanjutnya
-    Menyelesaikan fitur lainnya yang sudah dirancang sebelumnya seperti informasi lomba, beasiswa, tracking alumni, informasi dosen GFM, dan pasca kampus
-    Memperbaiki UX design agar user nyaman menggunakannya
-    Menambahkan alarm pengingat ketika menuju deadline tugas
+   Menyelesaikan fitur lainnya yang sudah dirancang sebelumnya seperti informasi lomba, beasiswa, tracking alumni, informasi dosen GFM, dan pasca kampus
+   Memperbaiki UX design agar user nyaman menggunakannya
+   Menambahkan alarm pengingat ketika menuju deadline tugas
  
