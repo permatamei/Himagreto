@@ -5,7 +5,7 @@
   * Kelompok: 3
   * Nama Asisten Praktikum:
     - Qorry Atul Chairunnisa (G64170014)
-    - Indah Puspita (G64170035)
+    - Indah Puspita          (G64170035)
 - Nama anggota kelompok dan masing-masing role
   * Permata Mei Kartika           (G24180004) sebagai UI/UX Researcher dan Front-End
   * Eka Devi Oktaviani            (G24180017) sebagai Data Miner
@@ -120,88 +120,28 @@
    ![WhatsApp Image 2021-06-11 at 04 21 16](https://user-images.githubusercontent.com/79287863/121613646-2419d300-ca87-11eb-8f61-c6ca14bc7dd3.jpeg)
 
 ### Testing
-Deskripsi Pengujian
-Prosedur Pengujian
-Data Masukan
-Keluaran Yang Diharapkan
-Hal Yang Didapati
-Hasil Uji
-Login
-Pengguna mendaftar dengan mengisi nama pengguna, kata sandi dan konfirmasi kata sandi yang benar
-Positive test case
-Nama Pengguna: G24180096
-Kata Sandi: G24180096
-Pendaftaran berhasil dan langsung menuju halaman utama
-Pendaftaran berhasil dan langsung menuju halaman utama
-Diterima
-Pengguna mendaftar dengan mengisi nama pengguna yang salah, atau kata sandi dan konfirmasi kata sandi yang salah
-Negative test case
-Nama Pengguna: G24180096
-Kata Sandi: G24180096
-Peringatan nama pengguna berupa NIM dan password harus benar
-Peringatan konfirmasi NIM dan password harus diisi dengan benar
-Diterima
-Melihat Daftar Materi
-Pengguna dapat masuk dengan NIM dan password yang benar
-Positive test case
- 
-Muncul daftar materi per semester beserta mata kuliah dan bab-babnya
-Muncul daftar materi
-Diterima
-Pengguna dapat masuk dengan NIM dan password yang benar
-Negative test case
- 
-Muncul daftar materi tetapi tidak dapat melihat bab-babnya
-Daftar materi dan bab tidak muncul
-Diterima
-Mengunduh Materi
-Pengguna memilih menu materi dan memilih bab yang akan diunduh
-Positive test case
- 
-Bahan materi dapat diunduh dengan menekan tulisan bab
-Materi dapat terunduh
-Diterima
-Pengguna memilih menu materi dan memilih bab yang akan diunduh
-Negative test case
- 
-Bahan materi tidak dapat diunduh karena tidak merespon
-Bahan materi tidak dapat diunduh
-Diterima
-Melihat Daftar Tugas
-Pengguna memilih menu tugas setelah masuk
-Positive test case
- 
-Pengguna langsung melihat daftar tugas setiap harinya di minggu tersebut
-Terdapat daftar tugas
-Diterima
-Melihat Profil
-Pengguna dapat masuk dengan NIM dan password yang benar
-Positive test case
- 
-Pengguna menekan simbil profil dan langsung melihat profil yang masih kosong
-Menu profil tertampil
-Diterima
-Mengedit Profil
-Pengguna dapat melihat menu profil
-Positive test case
- 
-Pengguna mengedit biodata profil dengan menekan simbol pena
-Pengguna dapat mengedit biodata
-Diterima
-Pengguna dapat melihat menu profil
-Negative test case
- 
-Pengguna tidak dapat mengedit biodata profil dengan menekan simbol pena karena tidak berfungsi
-Pengguna tidak dapat mengedit biodata profil
- 
-Diterima
-Logout
-Pengguna keluar dari akun dengan menekan tombol kembali
- Positive test case
- 
-Muncul alert dialog dengan pesan "Apakah anda ingin keluar?" , tombol batal dan keluar
-muncul lert dialog dengan pesan "Apakah anda ingin keluar?" , tombol batal dan keluar
-Diterima
+
+
+Deskripsi Pengujian | Prosedur Pengujian | Data Masukan | Keluaran Yang Diharapkan | Hal Yang Didapati | Hasil Uji
+-- | -- | -- | -- | -- | --
+**Login**
+Pengguna mendaftar dengan mengisi nama pengguna, kata sandi dan konfirmasi kata sandi yang benar | Positive test case | Nama Pengguna: G24180096Kata Sandi: G24180096 | Pendaftaran berhasil dan langsung menuju halaman utama | Pendaftaran berhasil dan langsung menuju halaman utama | Diterima
+Pengguna mendaftar dengan mengisi nama pengguna yang salah, atau kata sandi dan konfirmasi kata sandi yang salah | Negative test case | Nama Pengguna: G24180096Kata Sandi: G24180096 | Peringatan nama pengguna berupa NIM dan password harus benar | Peringatan konfirmasi NIM dan password harus diisi dengan benar | Diterima
+**Melihat Daftar Materi**
+Pengguna dapat masuk dengan NIM dan password yang benar | Positive test case | &nbsp; | Muncul daftar materi per semester beserta mata kuliah dan bab-babnya | Muncul daftar materi | Diterima
+Pengguna dapat masuk dengan NIM dan password yang benar | Negative test case | &nbsp; | Muncul daftar materi tetapi tidak dapat melihat bab-babnya | Daftar materi dan bab tidak muncul | Diterima
+**Mengunduh Materi**
+Pengguna memilih menu materi dan memilih bab yang akan diunduh | Positive test case | &nbsp; | Bahan materi dapat diunduh dengan menekan tulisan bab | Materi dapat terunduh | Diterima
+Pengguna memilih menu materi dan memilih bab yang akan diunduh | Negative test case | &nbsp; | Bahan materi tidak dapat diunduh karena tidak merespon | Bahan materi tidak dapat diunduh | Diterima
+**Melihat Daftar Tugas**
+Pengguna memilih menu tugas setelah masuk | Positive test case | &nbsp; | Pengguna langsung melihat daftar tugas setiap harinya di minggu tersebut | Terdapat daftar tugas | Diterima
+**Melihat Profil**
+Pengguna dapat masuk dengan NIM dan password yang benar | Positive test case | &nbsp; | Pengguna menekan tombol profil dan langsung melihat profil yang masih kosong | Menu profil tertampil | Diterima
+**Mengedit Profil**
+Pengguna dapat melihat menu profil | Positive test case | &nbsp; | Pengguna mengedit biodata profil dengan menekan simbol pena | Pengguna dapat mengedit biodata | Diterima
+Pengguna dapat melihat menu profil | Negative test case | &nbsp; | Pengguna tidak dapat mengedit biodata profil dengan menekan simbol pena karena tidak berfungsi | Pengguna tidak dapat mengedit biodata profil | Diterima
+**Logout**
+Pengguna keluar dari akun dengan menekan tombol kembali | Positive test case | &nbsp; | Muncul alert dialog dengan pesan "Apakah anda ingin keluar?" , tombol batal dan keluar | muncul alert dialog dengan pesan "Apakah anda ingin keluar?" , tombol batal dan keluar | Diterima
 
 ### Dokumentasi Project
    [Gsite](ipb.link/rplgsitehimagreto)
