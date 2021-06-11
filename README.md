@@ -80,22 +80,16 @@
 
 ### Fungsi CRUD
  * **Create**
-   - Admin dapat membuat akun sebagai admin
-   - Admin dapat menambahkan list tugas dan materi perkuliahan
-   - Mahasiswa GFM dapat membuat akun sebagai mahasiswa
+   - Admin dapat menambahkan list tugas
  * **Read**
-   - Admin dapat melihat list tugas
-   - Admin dapat melihat materi perkuliahan
+   - Admin dapat melihat list admin lain, list angkatan aktif, dan list tugas
    - Mahasiswa GFM dapat melihat list tugas
    - Mahasiswa GFM dapat melihat materi perkuliahan
  * **Update**
-   - Admin dapat mengupdate list tugas
-   - Admin dapat mengubah materi perkuliahan
+   - Admin dapat mengupdate tugas di setiap angkatan
    - Mahasiswa GFM dapat mengubah data pribadi seperti alamat dan nomor telepon
  * **Delete**
-   - Admin utama dapat menghapus admin di setiap angkatan
-   - Admin dapat menghapus list tugas dan materi perkuliahan yang sudah dibuat
-   - Mahasiswa GFM dapat menghapus akun 
+   - Admin utama dapat menghapus tugas di setiap angkatan
 
 ### Hasil implementasi
  * Screenshot sistem
