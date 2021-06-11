@@ -66,16 +66,19 @@
 
 ### Fungsi utama yang dikembangkan
  * Materi Perkuliahan
+ 
    Mahasiswa GFM dapat membaca dan mengunduh materi seperti slide kuliah, rangkuman, contoh soal, maupun master.
 
    ![Screenshot_20210611-053615_Himagreto](https://user-images.githubusercontent.com/79287863/121613129-09932a00-ca86-11eb-95e8-bf02ede36499.jpg)
 
  * List dan Reminder Tugas
+ 
    Mahasiswa GFM dapat melihat list tugas harian maupun mingguan sehingga membantu dalam reminder tugas.
 
    ![Screenshot_20210611-053606_Himagreto](https://user-images.githubusercontent.com/79287863/121613148-14e65580-ca86-11eb-9fa3-0f9cf28f521d.jpg)
 
  * Edit Profil
+ 
    Mahasiswa GFM dapat mengubah dan melengkapi data pribadi seperti alamat, nomor telepon dan tanggal lahir. Hal ini dapat membantu dalam kebutuhan database anggota Himagreto. 
    
    ![Screenshot_20210611-053727_Himagreto](https://user-images.githubusercontent.com/79287863/121613170-1dd72700-ca86-11eb-907c-3badb51c29ff.jpg)
